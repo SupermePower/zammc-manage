@@ -3,8 +3,6 @@ package com.zammc.service.order;
 import com.zammc.domain.order.OrderInfoEntity;
 import com.zammc.page.PageBean;
 
-import java.util.List;
-
 /**
  * @Author : fly
  * @Description :
@@ -18,5 +16,29 @@ public interface OrderService {
      * @param orderInfo
      * @param pageBean
      */
-    List<OrderInfoEntity> queryOrderPage(OrderInfoEntity orderInfo, PageBean pageBean) throws Exception;
+    void queryOrderPage(OrderInfoEntity orderInfo, PageBean pageBean) throws Exception;
+
+    /**
+     * 删除订单信息
+     *
+     * @param orderInfo
+     * @throws Exception
+     */
+    void deleteOrder(OrderInfoEntity orderInfo) throws Exception;
+
+    /**
+     * 结束订单
+     *
+     * @param orderInfo
+     * @throws Exception
+     */
+    void finishOrder(OrderInfoEntity orderInfo) throws Exception;
+
+    /**
+     * 取消订单
+     *
+     * @param orderInfo
+     * @throws Exception
+     */
+    void cancelOrder(OrderInfoEntity orderInfo) throws Exception;
 }

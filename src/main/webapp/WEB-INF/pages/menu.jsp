@@ -43,9 +43,18 @@
     </li>
 
     <li>
-        <a href="#" class="dropdown-toggle">
+        <a href="http://localhost:7500/manage/order/queryOrderPage" class="dropdown-toggle">
             <i class="icon-edit"></i>
-            <span class="menu-text"> 订单 </span>
+            <span class="menu-text"> 订单管理 </span>
+
+            <b class="arrow icon-angle-down"></b>
+        </a>
+    </li>
+
+    <li>
+        <a href="http://localhost:7500/manage/goods/queryGoodsPage" class="dropdown-toggle">
+            <i class="icon-edit"></i>
+            <span class="menu-text"> 商品管理 </span>
 
             <b class="arrow icon-angle-down"></b>
         </a>

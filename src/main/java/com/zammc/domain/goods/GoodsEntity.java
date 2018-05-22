@@ -156,4 +156,22 @@ public class GoodsEntity {
         this.dataStatus = dataStatus;
     }
 
+    @Override
+    public String toString() {
+        return "GoodsEntity{" +
+                "goodsId=" + goodsId +
+                ", goodsName='" + goodsName + '\'' +
+                ", goodsImg='" + goodsImg + '\'' +
+                ", goodsCate=" + goodsCate +
+                ", goodsType='" + goodsType + '\'' +
+                ", goodsPrice=" + goodsPrice +
+                ", goodsDiscount=" + goodsDiscount +
+                ", goodsStatus=" + goodsStatus +
+                ", goodsMsg='" + goodsMsg + '\'' +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                ", version=" + version +
+                ", dataStatus=" + dataStatus +
+                '}';
+    }
 }

@@ -1,5 +1,5 @@
 var common = {
-    ctx: '/zammc-manage',
+    ctx: '',
     query_string: location.search.replace(/(\?|&)pageNum=.+/, '').substr(1),
     pageNum: parseInt($('.paging-bg').html()),
     getTable: function () {
@@ -36,7 +36,6 @@ var common = {
     },
     options: {
         success: function (message) {
-            //message = jQuery.parseJSON(message);
             if (message.status == 'SUCCESS') {
                 common.alert(message, function () {
                     location.reload();
@@ -58,7 +57,7 @@ var common = {
                 + '<div class="common-modal">'
                 + '<div class="common-modal-head">'
                 + '<p id="alertTitle">' + tip.title + '</p>'
-                + '<span><img data-modal-close src="' + common.ctx + '/img/close.png"/></span>'
+                + '<span><img data-modal-close src="' + common.ctx + '/manage/resources/css/images/close.png"/></span>'
                 + '</div>'
                 + '<div id="alertContent" class="common-modal-p1">' + tip.message + '</div>'
                 + '<div class="common-modal-box">'
@@ -85,7 +84,7 @@ var common = {
                 + '<div class="common-modal">'
                 + '<div class="common-modal-head">'
                 + '<p id="confirmTitle">' + tip.title + '</p>'
-                + '<span><img data-modal-close src="' + common.ctx + '/img/close.png"/></span>'
+                + '<span><img data-modal-close src="' + common.ctx + '/manage/resources/css/images/close.png"/></span>'
                 + '</div>'
                 + '<div id="confirmContent" class="common-modal-p1">' + tip.message + '</div>'
                 + '<div class="common-modal-box">'
@@ -107,7 +106,7 @@ var common = {
             + '<div class="common-modal2">'
             + '<div class="common-modal-head2">'
             + '<p id="confirmTitle2">' + tip.title + '</p>'
-            + '<span><img data-modal-close2 src="' + common.ctx + '/img/close.png"/></span>'
+            + '<span><img data-modal-close2 src="' + common.ctx + '/manage/resources/css/img/close.png"/></span>'
             + '</div>'
             + '<div id="confirmContent2" class="common-modal-p1_2">' + tip.message + '</div>'
             + '<div class="common-modal-box2">'
@@ -146,7 +145,7 @@ $(document).ajaxStart(function () {
     var html = '';
     html += '<div class="commom-modal-content cover">';
     html += '	<div class="commom-modal-main">';
-    html += '		<p class="common-img"><img style="width:47px;height:47px;" src="' + common.ctx + '/img/upload.gif" /></p>';
+    html += '		<p class="common-img"><img style="width:47px;height:47px;" src="' + common.ctx + '/manage/resources/css/img/upload.gif" /></p>';
     html += '	</div>';
     html += '</div>';
     $('body').append(html)
@@ -212,7 +211,7 @@ $(document).on('click', '[data-modal-close]', function () {
 })
 
 $(document).on('click', 'img', function () {
-    if ($(this).parents('#zoomImg').length || $(this).attr('src').search(common.ctx + '/img') != -1) return
+    if ($(this).parents('#zoomImg').length || $(this).attr('src').search(common.ctx + '/resources/css/images') != -1) return
     $('#zoomImg').show().find('img').attr('src', $(this).attr('src'))
     $('body').css('overflow', 'hidden')
 })

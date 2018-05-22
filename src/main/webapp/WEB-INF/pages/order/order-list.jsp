@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="${rootURL}resources/css/ace-skins.min.css"/>
     <link rel="stylesheet" href="${rootURL}resources/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="${rootURL}resources/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="${rootURL}resources/css/common.css"/>
     <!--[if IE 7]-->
     <link rel="stylesheet" href="${rootURL}resources/css/font-awesome-ie7.min.css"/>
     <!--[if lte IE 8]-->
@@ -70,7 +71,7 @@
                 <div class="nav-search" id="nav-search">
                     <form class="form-search">
 								<span class="input-icon">
-									<input type="text" placeholder="Search ..." class="nav-search-input"
+									<input type="text" placeholder="订单号" class="nav-search-input"
                                            id="nav-search-input" autocomplete="off"/>
 									<i class="icon-search nav-search-icon"></i>
 								</span>
@@ -123,58 +124,27 @@
                                             <td class="hidden-480">${order.tableNum}</td>
                                             <td>${order.createTime}</td>
                                             <td class="hidden-480">
-                                                <span class="label label-sm label-warning">${order.payStatus}</span>
+                                                <c:if test="${order.payStatus == '0'}">
+                                                    <span class="label label-sm label-warning">待支付</span>
+                                                </c:if>
+                                                <c:if test="${order.payStatus == '1'}">
+                                                    <span class="label label-sm label-success">已支付</span>
+                                                </c:if>
+                                                <c:if test="${order.payStatus == '2'}">
+                                                    <span class="label label-sm label-inverse arrowed-in">已取消</span>
+                                                </c:if>
                                             </td>
                                             <td>
                                                 <div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
-                                                    <a class="blue" href="#">
-                                                        <i class="icon-zoom-in bigger-130"></i>
-                                                    </a>
-
-                                                    <a class="green" href="#">
-                                                        <i class="icon-pencil bigger-130"></i>
-                                                    </a>
-
-                                                    <a class="red" href="#">
-                                                        <i class="icon-trash bigger-130"></i>
-                                                    </a>
-                                                </div>
-                                                <div class="visible-xs visible-sm hidden-md hidden-lg">
-                                                    <div class="inline position-relative">
-                                                        <button class="btn btn-minier btn-yellow dropdown-toggle"
-                                                                data-toggle="dropdown">
-                                                            <i class="icon-caret-down icon-only bigger-120"></i>
-                                                        </button>
-
-                                                        <ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close">
-                                                            <li>
-                                                                <a href="#" class="tooltip-info" data-rel="tooltip"
-                                                                   title="View">
-                                                                                    <span class="blue">
-                                                                                        <i class="icon-zoom-in bigger-120"></i>
-                                                                                    </span>
-                                                                </a>
-                                                            </li>
-
-                                                            <li>
-                                                                <a href="#" class="tooltip-success" data-rel="tooltip"
-                                                                   title="Edit">
-                                                                                    <span class="green">
-                                                                                        <i class="icon-edit bigger-120"></i>
-                                                                                    </span>
-                                                                </a>
-                                                            </li>
-
-                                                            <li>
-                                                                <a href="#" class="tooltip-error" data-rel="tooltip"
-                                                                   title="Delete">
-                                                                                    <span class="red">
-                                                                                        <i class="icon-trash bigger-120"></i>
-                                                                                    </span>
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
+                                                    <button class="btn btn-xs btn-success finishOrder" data="${order.orderId}" url="/manage/order/finishOrder">
+                                                        <i class="icon-ok bigger-120"></i>
+                                                    </button>
+                                                    <button class="btn btn-danger btn-sm cancelOrder" data="${order.orderId}" url="/manage/order/cancelOrder">
+                                                        <i class="icon-reply icon-only"></i>
+                                                    </button>
+                                                    <button class="btn btn-xs btn-danger deleteOrder" data="${order.orderId}" url="/manage/order/deleteOrder">
+                                                        <i class="icon-trash bigger-120"></i>
+                                                    </button>
                                                 </div>
                                             </td>
                                         </tr>
@@ -198,4 +168,5 @@
 <script type="text/javascript" src="${rootURL}resources/js/jQuery.min.js"></script>
 <script type="text/javascript" src="${rootURL}resources/js/jQuery.form.js"></script>
 <script type="text/javascript" src="${rootURL}resources/js/common.js"></script>
+<script type="text/javascript" src="${rootURL}resources/js/order/order-list.js"></script>
 </html>

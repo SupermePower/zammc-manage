@@ -1,0 +1,140 @@
+package com.zammc.controller;
+
+import com.zammc.domain.goods.GoodsEntity;
+import com.zammc.page.PageBean;
+import com.zammc.response.Message;
+import com.zammc.response.MessageStatus;
+import com.zammc.response.MessageTitle;
+import com.zammc.service.goods.GoodsService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
+
+/**
+ * @Author : fly
+ * @Description :
+ * @Date 2018/5/22
+ */
+@Controller
+@RequestMapping("/goods")
+@Slf4j
+public class GoodsController {
+
+    @Autowired
+    private GoodsService goodsService;
+
+    /**
+     * 获取商品列表信息
+     *
+     * @param goodsEntity
+     * @param pageBean
+     * @return
+     */
+    @RequestMapping(value = "/queryGoodsPage")
+    public ModelAndView queryGoodsPage(GoodsEntity goodsEntity, PageBean pageBean) {
+        ModelAndView modelAndView = new ModelAndView("goods/goods-list");
+        try {
+            goodsService.queryGoodsPage(goodsEntity, pageBean);
+            modelAndView.addObject("page", pageBean)
+                    .addObject("goods", goodsEntity);
+        } catch (Exception e) {
+            log.error("GoodsController queryGoodsPage Exception \n", e);
+        }
+        return modelAndView;
+    }
+
+    /**
+     * 跳转至新增界面
+     *
+     * @return
+     */
+    @RequestMapping(value = "/toAdd")
+    public ModelAndView toAdd() {
+        return new ModelAndView("goods/goods-add");
+    }
+
+    /**
+     * 添加奖品信息
+     *
+     * @param goodsEntity
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "/addGoods")
+    @ResponseBody
+    public Message addGoods(GoodsEntity goodsEntity, HttpServletRequest request) {
+        Message message = null;
+        try {
+            message = goodsService.addGoods(goodsEntity, request);
+        } catch (Exception e) {
+            log.error("GoodsController addGoods goodsEntity -> {} Exception", goodsEntity.toString(), e);
+            message = new Message(MessageStatus.FAIL, MessageTitle.失败, "添加失败");
+        }
+        return message;
+    }
+
+    /**
+     * 删除商品信息
+     *
+     * @param goodsEntity
+     * @return
+     */
+    @RequestMapping(value = "/deleteGoods")
+    @ResponseBody
+    public Message deleteGoods(GoodsEntity goodsEntity) {
+        Message message = null;
+        try {
+            goodsService.deleteGoods(goodsEntity);
+            message = new Message(MessageStatus.SUCCESS, MessageTitle.成功, "删除成功");
+        } catch (Exception e) {
+            log.error("GoodsController deleteGoods goodsId -> {} Exception \n", goodsEntity.getGoodsId(), e);
+            message = new Message(MessageStatus.FAIL, MessageTitle.失败, "删除失败");
+        }
+        return message;
+    }
+
+    /**
+     * 商品下架
+     *
+     * @param goodsEntity
+     * @return
+     */
+    @RequestMapping(value = "/dismountGoods")
+    @ResponseBody
+    public Message dismountGoods(GoodsEntity goodsEntity) {
+        Message message = null;
+        try {
+            goodsService.dismountGoods(goodsEntity);
+            message = new Message(MessageStatus.SUCCESS, MessageTitle.成功, "操作成功");
+        } catch (Exception e) {
+            log.error("GoodsController dismountGoods goodsId -> {} Exception \n", goodsEntity.getGoodsId(), e);
+            message = new Message(MessageStatus.FAIL, MessageTitle.失败, "操作失败");
+        }
+        return message;
+    }
+
+    /**
+     * 商品上架
+     *
+     * @param goodsEntity
+     * @return
+     */
+    @RequestMapping(value = "/shelfGoods")
+    @ResponseBody
+    public Message shelfGoods(GoodsEntity goodsEntity) {
+        Message message = null;
+        try {
+            goodsService.shelfGoods(goodsEntity);
+            message = new Message(MessageStatus.SUCCESS, MessageTitle.成功, "操作成功");
+        } catch (Exception e) {
+            log.error("GoodsController shelfGoods goodsId -> {} Exception \n", goodsEntity.getGoodsId(), e);
+            message = new Message(MessageStatus.FAIL, MessageTitle.失败, "操作失败");
+        }
+        return message;
+    }
+}
