@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@include file="./taglib.jsp" %>
+<link rel="stylesheet" href='${rootURL}resources/css/page.css'/>
 <div class="paging">
     <div class=""></div>
     <div class="paging-box"><p class="paging-text">共有${page.totalRecorder }条，每页显示${page.pageSize }条</p>
         <ul class="paging-list">
-            <li id="firstpage" ${page.pageNum == 1 ? 'class="disabled"':''}><img src="${ctx}/img/paging-01.png"/></li>
-            <li id="prevpage" ${page.pageNum == 1 ? 'class="disabled"':''}><img src="${ctx}/img/paging-02.png"/></li>
+            <li id="firstpage" ${page.pageNum == 1 ? 'class="disabled"':''}><img src="${rootURL}/resources/images/paging-01.png"/></li>
+            <li id="prevpage" ${page.pageNum == 1 ? 'class="disabled"':''}><img src="${rootURL}/resources/images/paging-02.png"/></li>
             <c:forEach var="pageIndex" begin="1" end="${page.totalPage}"><c:choose><c:when
                     test="${pageIndex==1 }"><c:choose><c:when test="${page.pageNum == pageIndex}">
                 <li class="paging-bg page">${pageIndex}</li>

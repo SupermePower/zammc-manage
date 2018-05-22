@@ -14,13 +14,13 @@ public class OrderInfoSpecification {
     public static Specification<OrderInfoEntity> where(OrderInfoEntity request) {
         if(request.getOrderId() != 0) { //全部
                 return Specifications.<OrderInfoEntity>and()
-                        .eq("dataStatus", "0")
+                        .eq("dataStatus", "1")
                         .eq("orderId", request.getOrderId())
                         .build();
 
         } else if (request.getOrderId() == 0) {
             return Specifications.<OrderInfoEntity>and()
-                    .eq("dataStatus", "0")
+                    .eq("dataStatus", "1")
                     .build();
         } else {
             return null;

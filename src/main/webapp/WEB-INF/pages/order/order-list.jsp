@@ -99,93 +99,86 @@
                                     <th>订单号</th>
                                     <th>总价</th>
                                     <th class="hidden-480">桌号</th>
-
                                     <th>
                                         <i class="icon-time bigger-110 hidden-480"></i>
                                         下单时间
                                     </th>
                                     <th class="hidden-480">订单状态</th>
-
                                     <th class="hidden-480">操作</th>
                                 </tr>
                                 </thead>
-
                                 <tbody>
+                                    <c:forEach var="order" items="${ page.content}" varStatus="in">
+                                        <tr>
+                                            <td class="center">
+                                                <label>
+                                                    <input type="checkbox" class="ace"/>
+                                                    <span class="lbl"></span>
+                                                </label>
+                                            </td>
+                                            <td>
+                                                <a href="#">${order.orderId}</a>
+                                            </td>
+                                            <td>${order.totalprice}</td>
+                                            <td class="hidden-480">${order.tableNum}</td>
+                                            <td>${order.createTime}</td>
+                                            <td class="hidden-480">
+                                                <span class="label label-sm label-warning">${order.payStatus}</span>
+                                            </td>
+                                            <td>
+                                                <div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
+                                                    <a class="blue" href="#">
+                                                        <i class="icon-zoom-in bigger-130"></i>
+                                                    </a>
 
+                                                    <a class="green" href="#">
+                                                        <i class="icon-pencil bigger-130"></i>
+                                                    </a>
 
-                                <tr>
-                                    <td class="center">
-                                        <label>
-                                            <input type="checkbox" class="ace"/>
-                                            <span class="lbl"></span>
-                                        </label>
-                                    </td>
+                                                    <a class="red" href="#">
+                                                        <i class="icon-trash bigger-130"></i>
+                                                    </a>
+                                                </div>
+                                                <div class="visible-xs visible-sm hidden-md hidden-lg">
+                                                    <div class="inline position-relative">
+                                                        <button class="btn btn-minier btn-yellow dropdown-toggle"
+                                                                data-toggle="dropdown">
+                                                            <i class="icon-caret-down icon-only bigger-120"></i>
+                                                        </button>
 
-                                    <td>
-                                        <a href="#">max.com</a>
-                                    </td>
-                                    <td>$60</td>
-                                    <td class="hidden-480">4,400</td>
-                                    <td>Mar 11</td>
+                                                        <ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close">
+                                                            <li>
+                                                                <a href="#" class="tooltip-info" data-rel="tooltip"
+                                                                   title="View">
+                                                                                    <span class="blue">
+                                                                                        <i class="icon-zoom-in bigger-120"></i>
+                                                                                    </span>
+                                                                </a>
+                                                            </li>
 
-                                    <td class="hidden-480">
-                                        <span class="label label-sm label-warning">Expiring</span>
-                                    </td>
+                                                            <li>
+                                                                <a href="#" class="tooltip-success" data-rel="tooltip"
+                                                                   title="Edit">
+                                                                                    <span class="green">
+                                                                                        <i class="icon-edit bigger-120"></i>
+                                                                                    </span>
+                                                                </a>
+                                                            </li>
 
-                                    <td>
-                                        <div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
-                                            <a class="blue" href="#">
-                                                <i class="icon-zoom-in bigger-130"></i>
-                                            </a>
-
-                                            <a class="green" href="#">
-                                                <i class="icon-pencil bigger-130"></i>
-                                            </a>
-
-                                            <a class="red" href="#">
-                                                <i class="icon-trash bigger-130"></i>
-                                            </a>
-                                        </div>
-
-                                        <div class="visible-xs visible-sm hidden-md hidden-lg">
-                                            <div class="inline position-relative">
-                                                <button class="btn btn-minier btn-yellow dropdown-toggle"
-                                                        data-toggle="dropdown">
-                                                    <i class="icon-caret-down icon-only bigger-120"></i>
-                                                </button>
-
-                                                <ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close">
-                                                    <li>
-                                                        <a href="#" class="tooltip-info" data-rel="tooltip"
-                                                           title="View">
-                                                                            <span class="blue">
-                                                                                <i class="icon-zoom-in bigger-120"></i>
-                                                                            </span>
-                                                        </a>
-                                                    </li>
-
-                                                    <li>
-                                                        <a href="#" class="tooltip-success" data-rel="tooltip"
-                                                           title="Edit">
-                                                                            <span class="green">
-                                                                                <i class="icon-edit bigger-120"></i>
-                                                                            </span>
-                                                        </a>
-                                                    </li>
-
-                                                    <li>
-                                                        <a href="#" class="tooltip-error" data-rel="tooltip"
-                                                           title="Delete">
-                                                                            <span class="red">
-                                                                                <i class="icon-trash bigger-120"></i>
-                                                                            </span>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
+                                                            <li>
+                                                                <a href="#" class="tooltip-error" data-rel="tooltip"
+                                                                   title="Delete">
+                                                                                    <span class="red">
+                                                                                        <i class="icon-trash bigger-120"></i>
+                                                                                    </span>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </c:forEach>
                                 </tbody>
                             </table>
                             <jsp:include page="../page.jsp" flush="true" />
@@ -202,6 +195,7 @@
     </a>
 </div>
 </body>
+<script type="text/javascript" src="${rootURL}resources/js/jQuery.min.js"></script>
 <script type="text/javascript" src="${rootURL}resources/js/jQuery.form.js"></script>
 <script type="text/javascript" src="${rootURL}resources/js/common.js"></script>
 </html>

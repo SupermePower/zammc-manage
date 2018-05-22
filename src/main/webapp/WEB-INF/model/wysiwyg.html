@@ -165,7 +165,7 @@
 
 								<li>
 									<a href="#">
-										<i class="btn btn-xs btn-primary icon-user"></i>
+										<i class="btn btn-xs btn-primary icon-userId"></i>
 										Bob just signed up as an editor ...
 									</a>
 								</li>
@@ -277,8 +277,8 @@
 
 						<li class="light-blue">
 							<a data-toggle="dropdown" href="#" class="dropdown-toggle">
-								<img class="nav-user-photo" src="assets/avatars/user.jpg" alt="Jason's Photo" />
-								<span class="user-info">
+								<img class="nav-userId-photo" src="assets/avatars/userId.jpg" alt="Jason's Photo" />
+								<span class="userId-info">
 									<small>Welcome,</small>
 									Jason
 								</span>
@@ -286,7 +286,7 @@
 								<i class="icon-caret-down"></i>
 							</a>
 
-							<ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+							<ul class="userId-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
 								<li>
 									<a href="#">
 										<i class="icon-cog"></i>
@@ -296,7 +296,7 @@
 
 								<li>
 									<a href="#">
-										<i class="icon-user"></i>
+										<i class="icon-userId"></i>
 										Profile
 									</a>
 								</li>
@@ -1021,7 +1021,7 @@
 	//Add Image Resize Functionality to Chrome and Safari
 	//webkit browsers don't have image resize functionality when content is editable
 	//so let's add something using jQuery UI resizable
-	//another option would be opening a dialog for user to enter dimensions.
+	//another option would be opening a dialog for userId to enter dimensions.
 	if ( typeof jQuery.ui !== 'undefined' && /applewebkit/.test(navigator.userAgent.toLowerCase()) ) {
 		
 		var lastResizableImg = null;

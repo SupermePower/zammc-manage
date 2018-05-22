@@ -111,7 +111,7 @@
 
                 <li>
                     <a href="#">
-                        <i class="btn btn-xs btn-primary icon-user"></i>
+                        <i class="btn btn-xs btn-primary icon-userId"></i>
                         切换为编辑登录..
                     </a>
                 </li>
@@ -223,8 +223,8 @@
 
         <li class="light-blue">
             <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-                <img class="nav-user-photo" src="${rootURL}resources/avatars/user.jpg" alt="Jason's Photo"/>
-                <span class="user-info">
+                <img class="nav-userId-photo" src="${rootURL}resources/avatars/userId.jpg" alt="Jason's Photo"/>
+                <span class="userId-info">
 									<small>欢迎光临,</small>
 									Jason
 								</span>
@@ -232,7 +232,7 @@
                 <i class="icon-caret-down"></i>
             </a>
 
-            <ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+            <ul class="userId-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
                 <li>
                     <a href="#">
                         <i class="icon-cog"></i>
@@ -242,7 +242,7 @@
 
                 <li>
                     <a href="#">
-                        <i class="icon-user"></i>
+                        <i class="icon-userId"></i>
                         个人资料
                     </a>
                 </li>

@@ -34,7 +34,7 @@ public class OrderController {
         ModelAndView modelAndView = new ModelAndView("order/order-list");
         try {
             List<OrderInfoEntity> orderInfoEntities = orderService.queryOrderPage(orderInfo, pageBean);
-            modelAndView.addObject("pageBean", pageBean)
+            modelAndView.addObject("page", pageBean)
                     .addObject("order", orderInfo)
                     .addObject("orderList", orderInfoEntities);
         } catch (Exception e) {

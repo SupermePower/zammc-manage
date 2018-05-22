@@ -32,7 +32,7 @@ public class OrderServiceImpl implements OrderService {
      * @param pageBean
      */
     public List<OrderInfoEntity> queryOrderPage(OrderInfoEntity orderInfo, PageBean pageBean) throws Exception {
-        int page = pageBean.getPageNum();
+        int page = pageBean.getPageNum() - 1;
         int size = pageBean.getPageSize();
 
         List<Sort.Order> orders = new ArrayList<>();
@@ -44,6 +44,17 @@ public class OrderServiceImpl implements OrderService {
         pageBean.setPageSize(orderInfoPage.getSize());
         pageBean.setTotalPage(orderInfoPage.getTotalPages());
         pageBean.setTotalRecorder((int)orderInfoPage.getTotalElements());
+
+        size =orderInfoPage.getSize();
+        Integer number = orderInfoPage.getNumber();
+        Integer totalPage = orderInfoPage.getTotalPages();
+        Long totalElement = orderInfoPage.getTotalElements();
+        List<OrderInfoEntity> data = orderInfoPage.getContent();
+        pageBean.setPageSize(size);
+        pageBean.setPageNum(number+1);
+        pageBean.setTotalPage(totalPage);
+        pageBean.setTotalRecorder(totalElement);
+        pageBean.setContent(data);
         return orderInfoPage.getContent();
 
     }

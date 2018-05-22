@@ -13,7 +13,7 @@ import java.sql.Timestamp;
 @Table(name = "order_info")
 public class OrderInfoEntity {
     private long orderId;
-    private String user;
+    private String userId;
     private BigDecimal totalprice;
     private Long itemId;
     private Byte payStatus;
@@ -37,13 +37,13 @@ public class OrderInfoEntity {
     }
 
     @Basic
-    @Column(name = "user")
-    public String getUser() {
-        return user;
+    @Column(name = "user_id")
+    public String getUserId() {
+        return userId;
     }
 
-    public void setUser(String user) {
-        this.user = user;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     @Basic
