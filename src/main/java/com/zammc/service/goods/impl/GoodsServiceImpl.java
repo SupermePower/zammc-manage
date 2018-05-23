@@ -111,13 +111,13 @@ public class GoodsServiceImpl implements GoodsService {
      */
     public Message addGoods(GoodsEntity goodsEntity, HttpServletRequest request) throws Exception {
         MultipartHttpServletRequest mreq = (MultipartHttpServletRequest) request;
-        MultipartFile images = mreq.getFile("images");
-        if (images == null) {
+        MultipartFile image = mreq.getFile("image");
+        if (image == null) {
             return new Message(MessageStatus.FAIL, MessageTitle.失败, "上传图片不能为空");
         } else {
             String img = "";
             try {
-                img = FileUtil.uploadFile(images.getInputStream());
+                img = FileUtil.uploadFile(image.getInputStream());
             } catch (IOException e) {
                 e.printStackTrace();
             }

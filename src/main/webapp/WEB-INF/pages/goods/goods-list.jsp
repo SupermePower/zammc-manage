@@ -83,6 +83,10 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <h3 class="header smaller lighter blue">商品列表</h3>
+                        <a class="btn btn-info" href="${ctx}/manage/goods/toAdd">
+                            新增
+                            <i class="icon-print  align-top bigger-125 icon-on-right"></i>
+                        </a>
                         <div class="table-header">
                             商品信息
                         </div>

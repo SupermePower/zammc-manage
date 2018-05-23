@@ -38,7 +38,7 @@ $('.dismountGoods').click(function (e) {
     })
 });
 
-//删除订单
+//删除商品
 $('.deleteGoods').click(function (e) {
 
     var url = common.ctx + $(this).attr('url');

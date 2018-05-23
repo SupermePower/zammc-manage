@@ -5,16 +5,23 @@
 <html lang="en">
 <head>
     <title>商品管理</title>
+    <link rel="stylesheet" href="${rootURL}resources/css/bootstrap.min.css"/>
+
+
+    <link rel="stylesheet" href="${rootURL}resources/css/font-awesome.min.css"/>
+
+    <link rel="stylesheet" href="${rootURL}resources/css/common.css"/>
+    <link rel="stylesheet" href="${rootURL}resources/css/dropzone.css"/>
+
     <link rel="stylesheet" href='${rootURL}resources/css/ace.min.css'/>
     <link rel="stylesheet" href="${rootURL}resources/css/ace-rtl.min.css"/>
     <link rel="stylesheet" href="${rootURL}resources/css/ace-skins.min.css"/>
-    <link rel="stylesheet" href="${rootURL}resources/css/font-awesome.min.css"/>
-    <link rel="stylesheet" href="${rootURL}resources/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="${rootURL}resources/css/common.css"/>
     <!--[if IE 7]-->
     <link rel="stylesheet" href="${rootURL}resources/css/font-awesome-ie7.min.css"/>
     <!--[if lte IE 8]-->
     <link rel="stylesheet" href="${rootURL}resources/css/ace-ie.min.css"/>
+
+    <script src="${rootURL}resources/js/ace-extra.min.js"></script>
 </head>
 <body>
 <div class="navbar navbar-default" id="navbar">
@@ -67,23 +74,14 @@
                     </li>
                     <li class="active">控制台</li>
                 </ul><!-- .breadcrumb -->
-
-                <div class="nav-search" id="nav-search">
-                    <form class="form-search">
-								<span class="input-icon">
-									<input type="text" placeholder="商品名称" class="nav-search-input"
-                                           id="nav-search-input" autocomplete="off"/>
-									<i class="icon-search nav-search-icon"></i>
-								</span>
-                    </form>
-                </div><!-- #nav-search -->
             </div>
 
             <div class="page-content">
                 <div class="row">
                     <div class="col-xs-12">
                         <h3 class="header smaller lighter blue">新增商品</h3>
-                        <form class="form-horizontal add-goods-form" action="${ctx}/manage/goods/addGoods" method="post" enctype="multipart/form-data" role="form">
+                        <form class="form-horizontal add-goods-form" action="${ctx}/manage/goods/addGoods" method="post"
+                              enctype="multipart/form-data" role="form">
                             <div class="form-group">
                                 <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 商品名称 </label>
 
@@ -138,14 +136,35 @@
                                 </div>
                             </div>
 
+                            <div class="space-4"></div>
+
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" for="form-field-2">
+                                    商品图片 </label>
+                                <div class="col-sm-9" id="dropzone">
+
+                                        <div class="widget-main">
+                                            <input type="file" name="image" id="id-input-file-2" />
+                                        </div>
+
+                                  <%--  <div class="ace-file-input">
+                                        <input type="file" name="image" id="id-input-file-2">
+                                        <label class="file-label" data-title="Choose" style="width: 350px;">
+                                            <span class="file-name" data-title="No File ...">
+                                                <i class="icon-upload-alt"></i>
+                                            </span>
+                                        </label>
+                                    </div>--%>
+                                </div>
+                            </div>
+
                             <div class="form-group">
                                 <label class="col-sm-3 control-label no-padding-right" for="form-field-2">
                                     商品描述 </label>
-                                <span class="block pull-right">
-										<small class="grey middle">Choose style: &nbsp;</small>
-										<textarea style="width:1024px;height:500px;" id="editor"
-                                                  name="goodsMsg    "></textarea>
-									</span>
+                                <div class="col-sm-9">
+                                    <textarea class="form-control" style="width: 350px;" id="form-field-8"
+                                              placeholder="商品描述"></textarea>
+                                </div>
                             </div>
 
                             <div class="clearfix form-actions">
@@ -170,18 +189,32 @@
     </div><!-- /.page-content -->
 </div><!-- /.main-content -->
 
-</div><!-- /.main-container-inner -->
-
-<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
-    <i class="icon-double-angle-up icon-only bigger-110"></i>
-</a>
-</div>
+    <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+        <i class="icon-double-angle-up icon-only bigger-110"></i>
+    </a>
 </body>
 <script type="text/javascript" src="${rootURL}resources/js/jQuery.min.js"></script>
 <script type="text/javascript" src="${rootURL}resources/js/jQuery.form.js"></script>
 <script type="text/javascript" src="${rootURL}resources/js/common.js"></script>
 <script type="text/javascript" src="${rootURL}resources/js/goods/goods-add.js"></script>
-<script type="text/javascript" charset="utf-8" src="${rootURL}resources/ueditor/ueditor.config.js"></script>
-<script type="text/javascript" charset="utf-8" src="${rootURL}resources/ueditor/ueditor.all.js"></script>
-<script type="text/javascript" charset="utf-8" src="${rootURL}resources/ueditor/lang/zh-cn/zh-cn.js"></script>
+<script type="text/javascript" src="${rootURL}resources/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="${rootURL}resources/js/typeahead-bs2.min.js"></script>
+<script type="text/javascript" src="${rootURL}resources/js/dropzone.min.js"></script>
+<script type="text/javascript" src="${rootURL}resources/js/ace-elements.min.js"></script>
+<script type="text/javascript" src="${rootURL}resources/js/ace.min.js"></script>
+
+<script type="text/javascript" src="${rootURL}resources/js/jquery-ui-1.10.3.custom.min.js"></script>
+<script type="text/javascript" src="${rootURL}resources/js/jquery.ui.touch-punch.min.js"></script>
+<script type="text/javascript" src="${rootURL}resources/js/chosen.jquery.min.js"></script>
+<script type="text/javascript" src="${rootURL}resources/js/fuelux/fuelux.spinner.min.js"></script>
+<script type="text/javascript" src="${rootURL}resources/js/date-time/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript" src="${rootURL}resources/js/date-time/bootstrap-timepicker.min.js"></script>
+<script type="text/javascript" src="${rootURL}resources/js/date-time/moment.min.js"></script>
+<script type="text/javascript" src="${rootURL}resources/js/date-time/daterangepicker.min.js"></script>
+<script type="text/javascript" src="${rootURL}resources/js/bootstrap-colorpicker.min.js"></script>
+<script type="text/javascript" src="${rootURL}resources/js/jquery.knob.min.js"></script>
+<script type="text/javascript" src="${rootURL}resources/js/jquery.autosize.min.js"></script>
+<script type="text/javascript" src="${rootURL}resources/js/jquery.inputlimiter.1.3.1.min.js"></script>
+<script type="text/javascript" src="${rootURL}resources/js/jquery.maskedinput.min.js"></script>
+<script type="text/javascript" src="${rootURL}resources/js/bootstrap-tag.min.js"></script>
 </html>
