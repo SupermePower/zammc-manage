@@ -83,12 +83,12 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <h3 class="header smaller lighter blue">新增商品</h3>
-                        <form class="form-horizontal" role="form">
+                        <form class="form-horizontal add-goods-form" action="${ctx}/manage/goods/addGoods" method="post" enctype="multipart/form-data" role="form">
                             <div class="form-group">
                                 <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 商品名称 </label>
 
                                 <div class="col-sm-9">
-                                    <input type="text" id="form-field-1" placeholder="商品名称"
+                                    <input type="text" id="form-field-1" name="goodsName" placeholder="商品名称"
                                            class="col-xs-10 col-sm-5"/>
                                 </div>
                             </div>
@@ -99,7 +99,7 @@
                                 <label class="col-sm-3 control-label no-padding-right" for="form-field-2"> 商品分类 </label>
 
                                 <div class="col-sm-9">
-                                    <input type="text" id="form-field-2" placeholder="商品分类"
+                                    <input type="text" id="form-field-2" name="goodsCate" placeholder="商品分类"
                                            class="col-xs-10 col-sm-5"/>
                                 </div>
                             </div>
@@ -110,7 +110,7 @@
                                 <label class="col-sm-3 control-label no-padding-right" for="form-field-2"> 商品类型 </label>
 
                                 <div class="col-sm-9">
-                                    <input type="text" id="goodsType" placeholder="商品类型"
+                                    <input type="text" id="goodsType" name="goodsType" placeholder="商品类型"
                                            class="col-xs-10 col-sm-5"/>
                                 </div>
                             </div>
@@ -121,7 +121,7 @@
                                 <label class="col-sm-3 control-label no-padding-right" for="form-field-2"> 商品价格 </label>
 
                                 <div class="col-sm-9">
-                                    <input type="number" id="goodsPrice" placeholder="商品价格"
+                                    <input type="number" id="goodsPrice" name="goodsPrice" placeholder="商品价格"
                                            class="col-xs-10 col-sm-5"/>
                                 </div>
                             </div>
@@ -133,7 +133,7 @@
                                     商品优惠价 </label>
 
                                 <div class="col-sm-9">
-                                    <input type="number" id="goodsDiscount" placeholder="商品优惠价"
+                                    <input type="number" id="goodsDiscount" name="goodsDiscount" placeholder="商品优惠价"
                                            class="col-xs-10 col-sm-5"/>
                                 </div>
                             </div>
@@ -143,13 +143,14 @@
                                     商品描述 </label>
                                 <span class="block pull-right">
 										<small class="grey middle">Choose style: &nbsp;</small>
-										<textarea style="width:1024px;height:500px;" id="editor" name="detail" ></textarea>
+										<textarea style="width:1024px;height:500px;" id="editor"
+                                                  name="goodsMsg    "></textarea>
 									</span>
                             </div>
 
                             <div class="clearfix form-actions">
                                 <div class="col-md-offset-3 col-md-9">
-                                    <button class="btn btn-info" type="button">
+                                    <button class="btn btn-info" id="addGoods" type="button">
                                         <i class="icon-ok bigger-110"></i>
                                         提交
                                     </button>
@@ -181,6 +182,6 @@
 <script type="text/javascript" src="${rootURL}resources/js/common.js"></script>
 <script type="text/javascript" src="${rootURL}resources/js/goods/goods-add.js"></script>
 <script type="text/javascript" charset="utf-8" src="${rootURL}resources/ueditor/ueditor.config.js"></script>
-<script type="text/javascript" charset="utf-8" src="${rootURL}resources/ueditor/ueditor.all.js"> </script>
+<script type="text/javascript" charset="utf-8" src="${rootURL}resources/ueditor/ueditor.all.js"></script>
 <script type="text/javascript" charset="utf-8" src="${rootURL}resources/ueditor/lang/zh-cn/zh-cn.js"></script>
 </html>

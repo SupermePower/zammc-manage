@@ -43,7 +43,7 @@ public class GoodsController {
             modelAndView.addObject("page", pageBean)
                     .addObject("goods", goodsEntity);
         } catch (Exception e) {
-            log.error("GoodsController queryGoodsPage Exception \n", e);
+            log.error("GoodsController queryRechargeOrderPage Exception \n", e);
         }
         return modelAndView;
     }

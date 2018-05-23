@@ -1,5 +1,5 @@
 //提交表单
-$('.add-confirm').click(function (e) {
+$('#addGoods').click(function (e) {
     e.preventDefault();
-    $("#addGoods").ajaxSubmit(common.options);
+    $(".add-goods-form").ajaxSubmit(common.options);
 });

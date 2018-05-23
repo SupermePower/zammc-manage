@@ -36,9 +36,18 @@
 
 <ul class="nav nav-list">
     <li class="active">
-        <a href="index.html">
+        <a href="http://localhost:7500/manage">
             <i class="icon-dashboard"></i>
             <span class="menu-text"> 控制台 </span>
+        </a>
+    </li>
+
+    <li>
+        <a href="http://localhost:7500/manage/goods/queryGoodsPage" class="dropdown-toggle">
+            <i class="icon-edit"></i>
+            <span class="menu-text"> 商品管理 </span>
+
+            <b class="arrow icon-angle-down"></b>
         </a>
     </li>
 
@@ -52,9 +61,18 @@
     </li>
 
     <li>
-        <a href="http://localhost:7500/manage/goods/queryGoodsPage" class="dropdown-toggle">
+        <a href="http://localhost:7500/manage/recharge/queryRechargeOrderPage" class="dropdown-toggle">
             <i class="icon-edit"></i>
-            <span class="menu-text"> 商品管理 </span>
+            <span class="menu-text"> 充值管理 </span>
+
+            <b class="arrow icon-angle-down"></b>
+        </a>
+    </li>
+
+    <li>
+        <a href="http://localhost:7500/manage/customer/queryCustomerPage" class="dropdown-toggle">
+            <i class="icon-edit"></i>
+            <span class="menu-text"> 顾客管理 </span>
 
             <b class="arrow icon-angle-down"></b>
         </a>
