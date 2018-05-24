@@ -116,4 +116,18 @@ public class NoticeEntity {
         this.dataStatus = dataStatus;
     }
 
+    @Override
+    public String toString() {
+        return "NoticeEntity{" +
+                "noticeId=" + noticeId +
+                ", noticeName='" + noticeName + '\'' +
+                ", noticeUrl='" + noticeUrl + '\'' +
+                ", noticeStatus=" + noticeStatus +
+                ", noticeSort=" + noticeSort +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                ", version=" + version +
+                ", dataStatus=" + dataStatus +
+                '}';
+    }
 }

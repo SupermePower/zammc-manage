@@ -4,7 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
-    <title>商品管理</title>
+    <title>公告管理</title>
     <link rel="stylesheet" href='${rootURL}resources/css/ace.min.css'/>
     <link rel="stylesheet" href="${rootURL}resources/css/ace-rtl.min.css"/>
     <link rel="stylesheet" href="${rootURL}resources/css/ace-skins.min.css"/>
@@ -71,7 +71,7 @@
                 <div class="nav-search" id="nav-search">
                     <form class="form-search">
 								<span class="input-icon">
-									<input type="text" placeholder="商品名称" class="nav-search-input"
+									<input type="text" placeholder="名称" class="nav-search-input"
                                            id="nav-search-input" autocomplete="off"/>
 									<i class="icon-search nav-search-icon"></i>
 								</span>
@@ -82,13 +82,13 @@
             <div class="page-content">
                 <div class="row">
                     <div class="col-xs-12">
-                        <h3 class="header smaller lighter blue">商品列表</h3>
-                        <a class="btn btn-info" href="${ctx}/manage/goods/toAdd">
+                        <h3 class="header smaller lighter blue">公告列表</h3>
+                        <a class="btn btn-info" href="${ctx}/manage/notice/toAdd">
                             新增
                             <i class="icon-print  align-top bigger-125 icon-on-right"></i>
                         </a>
                         <div class="table-header">
-                            商品信息
+                            公告信息
                         </div>
 
                         <div class="table-responsive">
@@ -101,58 +101,60 @@
                                             <span class="lbl"></span>
                                         </label>
                                     </th>
-                                    <th>商品名称</th>
-                                    <th>分类</th>
-                                    <th class="hidden-480">原价</th>
-                                    <th class="hidden-480">优惠价</th>
-                                    <th class="hidden-480">订单状态</th>
+                                    <th>公告名称</th>
+                                    <th>公告图片</th>
+                                    <th class="hidden-480">显示顺序</th>
+                                    <th class="hidden-480">公告状态</th>
                                     <th class="hidden-480">操作</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach var="goods" items="${ page.content}" varStatus="in">
-                                    <tr>
-                                        <td class="center">
-                                            <label>
-                                                <input type="checkbox" class="ace"/>
-                                                <span class="lbl"></span>
-                                            </label>
-                                        </td>
-                                        <td>
-                                            <a href="#">${goods.goodsName}</a>
-                                        </td>
-                                        <td>${goods.goodsCate}</td>
-                                        <td class="hidden-480">${goods.goodsPrice}</td>
-                                        <td>${goods.goodsDiscount}</td>
-                                        <td class="hidden-480">
-                                            <c:if test="${goods.goodsStatus == '0'}">
-                                                <span class="label label-sm label-success">在售</span>
-                                            </c:if>
-                                            <c:if test="${goods.goodsStatus == '1'}">
-                                                <span class="label label-sm label-inverse arrowed-in">下架</span>
-                                            </c:if>
-                                        </td>
-                                        <td>
-                                            <div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
-                                                <button class="btn btn-xs btn-success shelfGoods"
-                                                        data="${goods.goodsId}" url="/manage/goods/shelfGoods">
-                                                    <i class="icon-ok bigger-120">上架</i>
-                                                </button>
-                                                <button class="btn btn-inverse btn-xs dismountGoods"
-                                                        data="${goods.goodsId}" url="/manage/goods/dismountGoods">
-                                                    <i class="icon-lock bigger-120">下架</i>
-                                                </button>
-                                                <button class="btn btn-xs btn-danger deleteGoods"
-                                                        data="${goods.goodsId}" url="/manage/goods/deleteGoods">
-                                                    <i class="icon-trash bigger-120">删除</i>
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </c:forEach>
+                                    <c:forEach var="notice" items="${ page.content}" varStatus="in">
+                                        <tr>
+                                            <td class="center">
+                                                <label>
+                                                    <input type="checkbox" class="ace"/>
+                                                    <span class="lbl"></span>
+                                                </label>
+                                            </td>
+                                            <td>
+                                               ${notice.noticeName}
+                                            </td>
+                                            <td>${notice.noticeUrl}</td>
+                                            <td class="hidden-480">${notice.noticeSort}</td>
+                                            <td class="hidden-480">
+                                                <c:if test="${notice.noticeStatus == '1'}">
+                                                    <span class="label label-sm label-success">启用</span>
+                                                </c:if>
+                                                <c:if test="${notice.noticeStatus == '0'}">
+                                                    <span class="label label-sm label-inverse arrowed-in">禁用</span>
+                                                </c:if>
+                                            </td>
+                                            <td>
+                                                <div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
+                                                    <c:if test="${notice.noticeStatus == 0}">
+                                                        <a class="btn btn-xs btn-success startUsingNotice" data="${notice.noticeId}" url="/manage/notice/finishOrder">
+                                                            <i class="icon-ok bigger-120">启用</i>
+                                                        </a>
+                                                    </c:if>
+                                                    <c:if test="${notice.noticeStatus == 1}">
+                                                        <a class="btn btn-danger btn-xs forbiddenNotice" data="${notice.noticeId}" url="/manage/notice/editNotice">
+                                                            <i class="icon-reply bigger-120">禁用</i>
+                                                        </a>
+                                                    </c:if>
+                                                    <a href="/manage/notice/toEdit?noticeId=${notice.noticeId}" class="btn btn-xs btn-primary no-radius">
+                                                        <i class="icon-edit bigger-120">编辑</i>
+                                                    </a>
+                                                    <a class="btn btn-xs btn-danger deleteNotice" data="${notice.noticeId}" url="/manage/notice/deleteNotice">
+                                                        <i class="icon-trash bigger-120">删除</i>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </c:forEach>
                                 </tbody>
                             </table>
-                            <jsp:include page="../page.jsp" flush="true"/>
+                            <jsp:include page="../page.jsp" flush="true" />
                         </div>
                     </div>
                 </div><!-- /.row -->
@@ -169,5 +171,5 @@
 <script type="text/javascript" src="${rootURL}resources/js/jQuery.min.js"></script>
 <script type="text/javascript" src="${rootURL}resources/js/jQuery.form.js"></script>
 <script type="text/javascript" src="${rootURL}resources/js/common.js"></script>
-<script type="text/javascript" src="${rootURL}resources/js/goods/goods-list.js"></script>
+<script type="text/javascript" src="${rootURL}resources/js/notice/notice-list.js"></script>
 </html>

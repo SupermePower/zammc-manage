@@ -52,6 +52,15 @@
     </li>
 
     <li>
+        <a href="http://localhost:7500/manage/goodsCate/queryGoodsCatePage" class="dropdown-toggle">
+            <i class="icon-edit"></i>
+            <span class="menu-text"> 商品分类 </span>
+
+            <b class="arrow icon-angle-down"></b>
+        </a>
+    </li>
+
+    <li>
         <a href="http://localhost:7500/manage/order/queryOrderPage" class="dropdown-toggle">
             <i class="icon-edit"></i>
             <span class="menu-text"> 订单管理 </span>
@@ -64,6 +73,24 @@
         <a href="http://localhost:7500/manage/recharge/queryRechargeOrderPage" class="dropdown-toggle">
             <i class="icon-edit"></i>
             <span class="menu-text"> 充值管理 </span>
+
+            <b class="arrow icon-angle-down"></b>
+        </a>
+    </li>
+
+    <li>
+        <a href="http://localhost:7500/manage/banner/queryBannerPage" class="dropdown-toggle">
+            <i class="icon-edit"></i>
+            <span class="menu-text"> banner管理 </span>
+
+            <b class="arrow icon-angle-down"></b>
+        </a>
+    </li>
+
+    <li>
+        <a href="http://localhost:7500/manage/notice/queryNoticePage" class="dropdown-toggle">
+            <i class="icon-edit"></i>
+            <span class="menu-text"> 公告管理 </span>
 
             <b class="arrow icon-angle-down"></b>
         </a>

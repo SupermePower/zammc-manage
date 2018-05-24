@@ -137,13 +137,13 @@
                                             <td>
                                                 <div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
                                                     <button class="btn btn-xs btn-success finishOrder" data="${order.orderId}" url="/manage/order/finishOrder">
-                                                        <i class="icon-ok bigger-120"></i>
+                                                        <i class="icon-ok bigger-120">完成</i>
                                                     </button>
-                                                    <button class="btn btn-danger btn-sm cancelOrder" data="${order.orderId}" url="/manage/order/cancelOrder">
-                                                        <i class="icon-reply icon-only"></i>
+                                                    <button class="btn btn-danger btn-xs cancelOrder" data="${order.orderId}" url="/manage/order/cancelOrder">
+                                                        <i class="icon-reply bigger-120">取消</i>
                                                     </button>
                                                     <button class="btn btn-xs btn-danger deleteOrder" data="${order.orderId}" url="/manage/order/deleteOrder">
-                                                        <i class="icon-trash bigger-120"></i>
+                                                        <i class="icon-trash bigger-120">删除</i>
                                                     </button>
                                                 </div>
                                             </td>

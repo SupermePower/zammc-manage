@@ -115,5 +115,18 @@ public class BannerEntity {
         this.dataStatus = dataStatus;
     }
 
-
+    @Override
+    public String toString() {
+        return "BannerEntity{" +
+                "bannerId=" + bannerId +
+                ", bannerName='" + bannerName + '\'' +
+                ", bannerUrl='" + bannerUrl + '\'' +
+                ", bannerStatus=" + bannerStatus +
+                ", bannerSort=" + bannerSort +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                ", version=" + version +
+                ", dataStatus=" + dataStatus +
+                '}';
+    }
 }
