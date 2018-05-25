@@ -99,4 +99,17 @@ public class RechargePackageEntity {
         this.dataStatus = dataStatus;
     }
 
+    @Override
+    public String toString() {
+        return "RechargePackageEntity{" +
+                "packageId=" + packageId +
+                ", packageName='" + packageName + '\'' +
+                ", rechargeMoney=" + rechargeMoney +
+                ", payMoney=" + payMoney +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                ", version=" + version +
+                ", dataStatus=" + dataStatus +
+                '}';
+    }
 }

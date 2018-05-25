@@ -32,7 +32,7 @@ public class CustomerServiceImpl implements CustomerService {
         int size = pageBean.getPageSize();
 
         List<Sort.Order> orders = new ArrayList<>();
-        orders.add(new Sort.Order(Sort.Direction.DESC, "updateTime"));
+        orders.add(new Sort.Order(Sort.Direction.DESC, "userId"));
         Sort sort = new Sort(orders);
         Pageable pageable = new PageRequest(page, size, sort);
         Page<UserInfoEntity> customerInfoPage = customerRepository.findAll(CustomerSpecification.where(userInfoEntity), pageable);

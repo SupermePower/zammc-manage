@@ -17,8 +17,6 @@ public class RechargeController {
     @Autowired
     private RechargeService rechargeService;
 
-    //TODO 前端数据渲染
-
     /**
      * 获取充值订单信息分页展示
      *
@@ -28,7 +26,7 @@ public class RechargeController {
      */
     @RequestMapping(value = "/queryRechargeOrderPage")
     public ModelAndView queryRechargeOrderPage(RechargeOrderEntity rechargeOrderEntity, PageBean pageBean) {
-        ModelAndView modelAndView = new ModelAndView("recharge-recharge-list");
+        ModelAndView modelAndView = new ModelAndView("recharge/recharge-list");
         try {
             rechargeService.queryRechargeOrderPage(rechargeOrderEntity, pageBean);
             modelAndView.addObject("page", pageBean)

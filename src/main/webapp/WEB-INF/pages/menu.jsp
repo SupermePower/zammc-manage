@@ -79,6 +79,15 @@
     </li>
 
     <li>
+        <a href="http://localhost:7500/manage/rechargePackage/queryRechargePackagePage" class="dropdown-toggle">
+            <i class="icon-edit"></i>
+            <span class="menu-text"> 充值套餐管理 </span>
+
+            <b class="arrow icon-angle-down"></b>
+        </a>
+    </li>
+
+    <li>
         <a href="http://localhost:7500/manage/banner/queryBannerPage" class="dropdown-toggle">
             <i class="icon-edit"></i>
             <span class="menu-text"> banner管理 </span>

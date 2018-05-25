@@ -4,7 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
-    <title>充值订单管理</title>
+    <title>充值套餐管理</title>
     <link rel="stylesheet" href='${rootURL}resources/css/ace.min.css'/>
     <link rel="stylesheet" href="${rootURL}resources/css/ace-rtl.min.css"/>
     <link rel="stylesheet" href="${rootURL}resources/css/ace-skins.min.css"/>
@@ -82,9 +82,13 @@
             <div class="page-content">
                 <div class="row">
                     <div class="col-xs-12">
-                        <h3 class="header smaller lighter blue">充值订单列表</h3>
+                        <h3 class="header smaller lighter blue">充值套餐列表</h3>
+                        <a class="btn btn-info" href="${ctx}/manage/rechargePackage/toAdd">
+                            新增
+                            <i class="icon-print  align-top bigger-125 icon-on-right"></i>
+                        </a>
                         <div class="table-header">
-                            充值信息
+                            套餐信息
                         </div>
 
                         <div class="table-responsive">
@@ -97,19 +101,14 @@
                                             <span class="lbl"></span>
                                         </label>
                                     </th>
-                                    <th>用户主键</th>
+                                    <th>套餐名称</th>
                                     <th>充值金额</th>
                                     <th class="hidden-480">支付金额</th>
-                                    <th>
-                                        <i class="icon-time bigger-110 hidden-480"></i>
-                                        充值时间
-                                    </th>
-                                    <th class="hidden-480">订单状态</th>
-                                    <th class="hidden-480">是否是套餐</th>
+                                    <th class="hidden-480">操作</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    <c:forEach var="rechargeOrder" items="${ page.content}" varStatus="in">
+                                    <c:forEach var="rechargePackage" items="${ page.content}" varStatus="in">
                                         <tr>
                                             <td class="center">
                                                 <label>
@@ -118,26 +117,19 @@
                                                 </label>
                                             </td>
                                             <td>
-                                                <a href="#">${rechargeOrder.userId}</a>
+                                                <a href="#">${rechargePackage.packageName}</a>
                                             </td>
-                                            <td>${rechargeOrder.rechargeMoney}</td>
-                                            <td class="hidden-480">${rechargeOrder.payMoney}</td>
-                                            <td>${rechargeOrder.createTime}</td>
-                                            <td class="hidden-480">
-                                                <c:if test="${rechargeOrder.orderStatus == '0'}">
-                                                    <span class="label label-sm label-warning">待支付</span>
-                                                </c:if>
-                                                <c:if test="${rechargeOrder.orderStatus == '1'}">
-                                                    <span class="label label-sm label-success">已支付</span>
-                                                </c:if>
-                                            </td>
-                                            <td class="hidden-480">
-                                                <c:if test="${rechargeOrder.isPackage == '0'}">
-                                                    <span class="label label-sm label-warning">否</span>
-                                                </c:if>
-                                                <c:if test="${rechargeOrder.isPackage == '1'}">
-                                                    <span class="label label-sm label-success">是</span>
-                                                </c:if>
+                                            <td>${rechargePackage.rechargeMoney}</td>
+                                            <td class="hidden-480">${rechargePackage.payMoney}</td>
+                                            <td>
+                                                <div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
+                                                    <a class="btn btn-xs btn-success toEdit" href="/manage/rechargePackage/toEdit?packageId=${rechargePackage.packageId}">
+                                                        <i class="icon-ok bigger-120">编辑</i>
+                                                    </a>
+                                                    <a class="btn btn-xs btn-danger deletePackage" data="${rechargePackage.packageId}" url="/manage/rechargePackage/deletePackage">
+                                                        <i class="icon-trash bigger-120">删除</i>
+                                                    </a>
+                                                </div>
                                             </td>
                                         </tr>
                                     </c:forEach>
@@ -160,5 +152,5 @@
 <script type="text/javascript" src="${rootURL}resources/js/jQuery.min.js"></script>
 <script type="text/javascript" src="${rootURL}resources/js/jQuery.form.js"></script>
 <script type="text/javascript" src="${rootURL}resources/js/common.js"></script>
-<script type="text/javascript" src="${rootURL}resources/js/recharge/recharge-list.js"></script>
+<script type="text/javascript" src="${rootURL}resources/js/recharge/recharge-package-list.js"></script>
 </html>
