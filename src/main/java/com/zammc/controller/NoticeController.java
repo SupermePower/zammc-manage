@@ -86,7 +86,7 @@ public class NoticeController {
      */
     @RequestMapping(value = "/toEdit")
     public ModelAndView toEdit(NoticeEntity noticeEntity) {
-        ModelAndView modelAndView = new ModelAndView("notice/notice-add");
+        ModelAndView modelAndView = new ModelAndView("notice/notice-edit");
         try {
             NoticeEntity notice = noticeService.queryNoticeById(noticeEntity);
             modelAndView.addObject("notice", notice);

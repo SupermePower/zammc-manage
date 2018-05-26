@@ -1,6 +1,5 @@
 //删除banner
 $('.deleteBanner').click(function (e) {
-
     var url = common.ctx + $(this).attr('url');
     var bannerId = $(this).attr('data');
     common.confirm({

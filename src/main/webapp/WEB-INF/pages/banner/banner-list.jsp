@@ -147,7 +147,7 @@
                                                     <i class="icon-edit bigger-120">编辑</i>
                                                 </a>
                                                 <a class="btn btn-xs btn-danger deleteBanner"
-                                                        data="${order.orderId}" url="/manage/banner/deleteBanner">
+                                                        data="${banner.bannerId}" url="/manage/banner/deleteBanner">
                                                     <i class="icon-trash bigger-120">删除</i>
                                                 </a>
                                             </div>

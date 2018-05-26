@@ -1,56 +1,57 @@
-//删除公告
-$('.deleteNotice').click(function (e) {
+//启用
+$('.startUsingCate').click(function (e) {
+
     var url = common.ctx + $(this).attr('url');
-    var noticeId = $(this).attr('data');
+    var cateId = $(this).attr('data');
     common.confirm({
-        title: '公告删除',
-        message: '是否删除当前公告？'
+        title: '启用分类',
+        message: '是否启用当前商品分类？'
     }, function () {
         $.ajax({
             url: url,
             type: 'post',
             data: {
-                noticeId: noticeId
+                cateId: cateId
             },
             success: common.options.success
         })
     })
 });
 
-//启用公告
-$('.startUsingNotice').click(function (e) {
+//禁用商品分类
+$('.forbiddenCate').click(function (e) {
 
     var url = common.ctx + $(this).attr('url');
-    var noticeId = $(this).attr('data');
+    var cateId = $(this).attr('data');
     common.confirm({
-        title: '公告启用',
-        message: '是否启用当前公告？'
+        title: '禁用分类',
+        message: '是否禁用当前商品分类？'
     }, function () {
         $.ajax({
             url: url,
             type: 'post',
             data: {
-                noticeId: noticeId
+                cateId: cateId
             },
             success: common.options.success
         })
     })
 });
 
-//禁用公告
-$('.forbiddenNotice').click(function (e) {
+//删除商品分类
+$('.deleteGoodsCate').click(function (e) {
 
     var url = common.ctx + $(this).attr('url');
-    var noticeId = $(this).attr('data');
+    var cateId = $(this).attr('data');
     common.confirm({
-        title: '公告禁用',
-        message: '是否禁用当前公告？'
+        title: '分类删除',
+        message: '是否删除当前商品分类？'
     }, function () {
         $.ajax({
             url: url,
             type: 'post',
             data: {
-                noticeId: noticeId
+                cateId: cateId
             },
             success: common.options.success
         })

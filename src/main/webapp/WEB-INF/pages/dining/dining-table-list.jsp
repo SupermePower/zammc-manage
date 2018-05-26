@@ -1,10 +1,11 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@include file="../taglib.jsp" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
-    <title>公告管理</title>
+    <title>餐位管理</title>
     <link rel="stylesheet" href='${rootURL}resources/css/ace.min.css'/>
     <link rel="stylesheet" href="${rootURL}resources/css/ace-rtl.min.css"/>
     <link rel="stylesheet" href="${rootURL}resources/css/ace-skins.min.css"/>
@@ -71,7 +72,7 @@
                 <div class="nav-search" id="nav-search">
                     <form class="form-search">
 								<span class="input-icon">
-									<input type="text" placeholder="名称" class="nav-search-input"
+									<input type="text" placeholder="餐位名称" class="nav-search-input"
                                            id="nav-search-input" autocomplete="off"/>
 									<i class="icon-search nav-search-icon"></i>
 								</span>
@@ -82,13 +83,13 @@
             <div class="page-content">
                 <div class="row">
                     <div class="col-xs-12">
-                        <h3 class="header smaller lighter blue">公告列表</h3>
-                        <a class="btn btn-info" href="${ctx}/manage/notice/toAdd">
+                        <h3 class="header smaller lighter blue">餐位列表</h3>
+                        <a class="btn btn-info" href="${ctx}/manage/diningTable/toAdd">
                             新增
                             <i class="icon-print  align-top bigger-125 icon-on-right"></i>
                         </a>
                         <div class="table-header">
-                            公告信息
+                            商品信息
                         </div>
 
                         <div class="table-responsive">
@@ -101,60 +102,46 @@
                                             <span class="lbl"></span>
                                         </label>
                                     </th>
-                                    <th>公告名称</th>
-                                    <th>公告图片</th>
-                                    <th class="hidden-480">显示顺序</th>
-                                    <th class="hidden-480">公告状态</th>
+                                    <th>餐位编号</th>
+                                    <th class="hidden-480">餐位状态</th>
                                     <th class="hidden-480">操作</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    <c:forEach var="notice" items="${ page.content}" varStatus="in">
-                                        <tr>
-                                            <td class="center">
-                                                <label>
-                                                    <input type="checkbox" class="ace"/>
-                                                    <span class="lbl"></span>
-                                                </label>
-                                            </td>
-                                            <td>
-                                               ${notice.noticeName}
-                                            </td>
-                                            <td>${notice.noticeUrl}</td>
-                                            <td class="hidden-480">${notice.noticeSort}</td>
-                                            <td class="hidden-480">
-                                                <c:if test="${notice.noticeStatus == '1'}">
-                                                    <span class="label label-sm label-success">启用</span>
-                                                </c:if>
-                                                <c:if test="${notice.noticeStatus == '0'}">
-                                                    <span class="label label-sm label-inverse arrowed-in">禁用</span>
-                                                </c:if>
-                                            </td>
-                                            <td>
-                                                <div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
-                                                    <c:if test="${notice.noticeStatus == 0}">
-                                                        <a class="btn btn-xs btn-success startUsingNotice" data="${notice.noticeId}" url="/manage/notice/startUsingNotice">
-                                                            <i class="icon-ok bigger-120">启用</i>
-                                                        </a>
-                                                    </c:if>
-                                                    <c:if test="${notice.noticeStatus == 1}">
-                                                        <a class="btn btn-danger btn-xs forbiddenNotice" data="${notice.noticeId}" url="/manage/notice/forbiddenNotice">
-                                                            <i class="icon-reply bigger-120">禁用</i>
-                                                        </a>
-                                                    </c:if>
-                                                    <a href="/manage/notice/toEdit?noticeId=${notice.noticeId}" class="btn btn-xs btn-primary no-radius">
-                                                        <i class="icon-edit bigger-120">编辑</i>
-                                                    </a>
-                                                    <a class="btn btn-xs btn-danger deleteNotice" data="${notice.noticeId}" url="/manage/notice/deleteNotice">
-                                                        <i class="icon-trash bigger-120">删除</i>
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </c:forEach>
+                                <c:forEach var="diningTable" items="${ page.content}" varStatus="in">
+                                    <tr>
+                                        <td class="center">
+                                            <label>
+                                                <input type="checkbox" class="ace"/>
+                                                <span class="lbl"></span>
+                                            </label>
+                                        </td>
+                                        <td>
+                                            ${diningTable.tableCode}
+                                        </td>
+                                        <td class="hidden-480">
+                                            <c:if test="${diningTable.tableStatus == '0'}">
+                                                <span class="label label-sm label-success">使用中</span>
+                                            </c:if>
+                                            <c:if test="${diningTable.tableStatus == '1'}">
+                                                <span class="label label-sm label-inverse arrowed-in">空闲</span>
+                                            </c:if>
+                                        </td>
+                                        <td>
+                                            <div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
+                                                <a href="/manage/diningTable/toEdit?tableId=${diningTable.tableId}" class="btn btn-xs btn-primary no-radius">
+                                                    <i class="icon-edit bigger-120">编辑</i>
+                                                </a>
+                                                <a class="btn btn-xs btn-danger deleteDiningTable" data="${diningTable.tableId}" url="/manage/diningTable/deleteDiningTable">
+                                                    <i class="icon-trash bigger-120">删除</i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
                                 </tbody>
                             </table>
-                            <jsp:include page="../page.jsp" flush="true" />
+                            <jsp:include page="../page.jsp" flush="true"/>
                         </div>
                     </div>
                 </div><!-- /.row -->
@@ -171,5 +158,5 @@
 <script type="text/javascript" src="${rootURL}resources/js/jQuery.min.js"></script>
 <script type="text/javascript" src="${rootURL}resources/js/jQuery.form.js"></script>
 <script type="text/javascript" src="${rootURL}resources/js/common.js"></script>
-<script type="text/javascript" src="${rootURL}resources/js/notice/notice-list.js"></script>
+<script type="text/javascript" src="${rootURL}resources/js/dining/dining-table-list.js"></script>
 </html>

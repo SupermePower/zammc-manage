@@ -114,6 +114,15 @@
         </a>
     </li>
 
+    <li>
+        <a href="http://localhost:7500/manage/diningTable/queryDiningTablePage" class="dropdown-toggle">
+            <i class="icon-edit"></i>
+            <span class="menu-text"> 餐位管理 </span>
+
+            <b class="arrow icon-angle-down"></b>
+        </a>
+    </li>
+
 </ul><!-- /.nav-list -->
 
 <div class="sidebar-collapse" id="sidebar-collapse">

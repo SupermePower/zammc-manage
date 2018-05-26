@@ -106,7 +106,7 @@ var common = {
             + '<div class="common-modal2">'
             + '<div class="common-modal-head2">'
             + '<p id="confirmTitle2">' + tip.title + '</p>'
-            + '<span><img data-modal-close2 src="' + common.ctx + '/manage/resources/css/img/close.png"/></span>'
+            + '<span><img data-modal-close2 src="' + common.ctx + '/manage/resources/css/images/close.png"/></span>'
             + '</div>'
             + '<div id="confirmContent2" class="common-modal-p1_2">' + tip.message + '</div>'
             + '<div class="common-modal-box2">'
@@ -145,7 +145,7 @@ $(document).ajaxStart(function () {
     var html = '';
     html += '<div class="commom-modal-content cover">';
     html += '	<div class="commom-modal-main">';
-    html += '		<p class="common-img"><img style="width:47px;height:47px;" src="' + common.ctx + '/manage/resources/css/img/upload.gif" /></p>';
+    html += '		<p class="common-img"><img style="width:47px;height:47px;" src="' + common.ctx + '/manage/resources/css/images/loading.gif" /></p>';
     html += '	</div>';
     html += '</div>';
     $('body').append(html)

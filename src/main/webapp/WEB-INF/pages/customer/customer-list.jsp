@@ -71,7 +71,7 @@
                 <div class="nav-search" id="nav-search">
                     <form class="form-search">
 								<span class="input-icon">
-									<input type="text" placeholder="订单号" class="nav-search-input"
+									<input type="text" name="nickName" placeholder="昵称" class="nav-search-input"
                                            id="nav-search-input" autocomplete="off"/>
 									<i class="icon-search nav-search-icon"></i>
 								</span>
@@ -116,12 +116,12 @@
                                                 <a href="#">${customer.nickName}</a>
                                             </td>
                                             <td>${customer.avatarUrl}</td>
-                                            <td class="hidden-480">${customer.genter}</td>
+                                            <td class="hidden-480">${customer.gender}</td>
                                             <td>
                                                 <div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
-                                                    <button class="btn btn-xs btn-danger deleteOrder" data="${customer.userId}" url="/manage/customer/deleteCustomer">
-                                                        <i class="icon-trash bigger-120"></i>
-                                                    </button>
+                                                    <a class="btn btn-xs btn-danger deleteCustomer" data="${customer.userId}" url="/manage/customer/deleteCustomer">
+                                                        <i class="icon-trash bigger-120">删除</i>
+                                                    </a>
                                                 </div>
                                             </td>
                                         </tr>

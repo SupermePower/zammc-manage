@@ -117,7 +117,7 @@
                                                 </label>
                                             </td>
                                             <td>
-                                                <a href="#">${rechargePackage.packageName}</a>
+                                                ${rechargePackage.packageName}
                                             </td>
                                             <td>${rechargePackage.rechargeMoney}</td>
                                             <td class="hidden-480">${rechargePackage.payMoney}</td>

@@ -1,9 +1,13 @@
 package com.zammc.service.goods.impl;
 
+import com.zammc.common.FileUtil;
 import com.zammc.domain.goods.GoodsCateEntity;
-import com.zammc.domain.goods.GoodsEntity;
+import com.zammc.idworker.IdWorker;
 import com.zammc.page.PageBean;
 import com.zammc.repository.GoodsCateRepository;
+import com.zammc.response.Message;
+import com.zammc.response.MessageStatus;
+import com.zammc.response.MessageTitle;
 import com.zammc.service.goods.GoodsCateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -11,7 +15,11 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +30,9 @@ import java.util.List;
  */
 @Service
 public class GoodsCateServiceImpl implements GoodsCateService {
+
+    @Autowired
+    private IdWorker idWorker;
 
     @Autowired
     private GoodsCateRepository goodsCateRepository;
@@ -47,5 +58,83 @@ public class GoodsCateServiceImpl implements GoodsCateService {
         pageBean.setTotalPage(goodsCatePage.getTotalPages());
         pageBean.setTotalRecorder(goodsCatePage.getTotalElements());
         pageBean.setContent(goodsCatePage.getContent());
+    }
+
+    /**
+     * 启用分类信息
+     *
+     * @param goodsCateEntity
+     * @throws Exception
+     */
+    @Override
+    public void startUsingCate(GoodsCateEntity goodsCateEntity) throws Exception {
+        GoodsCateEntity one = goodsCateRepository.findOne(goodsCateEntity.getCateId());
+        if (null != one && one.getDataStatus() == 1 && one.getStatus() == 0) {
+            one.setStatus((byte) 1);
+            goodsCateRepository.saveAndFlush(one);
+        }
+    }
+
+    /**
+     * 禁用分类信息
+     *
+     * @param goodsCateEntity
+     * @throws Exception
+     */
+    @Override
+    public void forbiddenCate(GoodsCateEntity goodsCateEntity) throws Exception {
+        GoodsCateEntity one = goodsCateRepository.findOne(goodsCateEntity.getCateId());
+        if (null != one && one.getDataStatus() == 1 && one.getStatus() == 1) {
+            one.setStatus((byte) 0);
+            goodsCateRepository.saveAndFlush(one);
+        }
+    }
+
+    /**
+     * 删除分类信息
+     *
+     * @param goodsCateEntity
+     * @throws Exception
+     */
+    @Override
+    public void deleteGoodsCate(GoodsCateEntity goodsCateEntity) throws Exception {
+        GoodsCateEntity one = goodsCateRepository.findOne(goodsCateEntity.getCateId());
+        if (null != one && one.getDataStatus() == 1) {
+            one.setDataStatus((byte) 0);
+            goodsCateRepository.saveAndFlush(one);
+        }
+    }
+
+    /**
+     * 新增商品分类信息
+     *
+     * @param goodsCateEntity
+     * @param request
+     * @return
+     * @throws Exception
+     */
+    public Message addGoodsCate(GoodsCateEntity goodsCateEntity, HttpServletRequest request) throws Exception {
+        if (null == goodsCateEntity.getCateName() || "".equals(goodsCateEntity.getCateName())) {
+            return new Message(MessageStatus.FAIL, MessageTitle.失败, "分类名称不能为空");
+        }
+        if (null == goodsCateEntity.getSort()) {
+            return new Message(MessageStatus.FAIL, MessageTitle.失败, "分类显示顺序不能为空");
+        }
+        MultipartHttpServletRequest mreq = (MultipartHttpServletRequest) request;
+        MultipartFile image = mreq.getFile("image");
+        if (image == null) {
+            return new Message(MessageStatus.FAIL, MessageTitle.失败, "上传图片不能为空");
+        } else {
+            String img = "";
+            try {
+                img = FileUtil.uploadFile(image.getInputStream());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            goodsCateEntity.setCateIcon(img);
+        }
+        goodsCateEntity.setCateId(idWorker.nextId());
+        goodsCateRepository.saveAndFlush(goodsCateEntity);
+        return new Message(MessageStatus.SUCCESS, MessageTitle.成功, "新增成功");
     }
 }

@@ -4,7 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 5.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
-    <title>公告管理</title>
+    <title>商品管理</title>
     <link rel="stylesheet" href="${rootURL}resources/css/bootstrap.min.css"/>
 
 
@@ -79,15 +79,14 @@
             <div class="page-content">
                 <div class="row">
                     <div class="col-xs-12">
-                        <h3 class="header smaller lighter blue">编辑公告</h3>
-                        <form class="form-horizontal edit-notice-form" action="${ctx}/manage/notice/editNotice" method="post"
+                        <h3 class="header smaller lighter blue">新增商品</h3>
+                        <form class="form-horizontal add-goods-form" action="${ctx}/manage/goods/addGoods" method="post"
                               enctype="multipart/form-data" role="form">
-                            <input type="hidden" name="noticeId" value="${notice.noticeId}" />
                             <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 公告名称 </label>
+                                <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 商品名称 </label>
 
                                 <div class="col-sm-9">
-                                    <input type="text" id="form-field-1" name="noticeName" value="${notice.noticeName}" placeholder="公告名称"
+                                    <input type="text" id="form-field-1" name="goodsName" placeholder="商品名称"
                                            class="col-xs-10 col-sm-5"/>
                                 </div>
                             </div>
@@ -95,9 +94,32 @@
                             <div class="space-4"></div>
 
                             <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="form-field-2"> 显示顺序 </label>
+                                <label class="col-sm-3 control-label no-padding-right" for="form-field-2"> 商品分类 </label>
+
                                 <div class="col-sm-9">
-                                    <input type="number" id="form-field-2" name="noticeSort" value="${notice.noticeSort}" placeholder="公告显示顺序"
+                                    <input type="text" id="form-field-2" name="goodsCate" placeholder="商品分类"
+                                           class="col-xs-10 col-sm-5"/>
+                                </div>
+                            </div>
+
+                            <div class="space-4"></div>
+
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" for="form-field-2"> 商品类型 </label>
+
+                                <div class="col-sm-9">
+                                    <input type="text" id="goodsType" name="goodsType" placeholder="商品类型"
+                                           class="col-xs-10 col-sm-5"/>
+                                </div>
+                            </div>
+
+                            <div class="space-4"></div>
+
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" for="form-field-2"> 商品价格 </label>
+
+                                <div class="col-sm-9">
+                                    <input type="number" id="goodsPrice" name="goodsPrice" placeholder="商品价格"
                                            class="col-xs-10 col-sm-5"/>
                                 </div>
                             </div>
@@ -106,18 +128,48 @@
 
                             <div class="form-group">
                                 <label class="col-sm-3 control-label no-padding-right" for="form-field-2">
-                                    公告图片 </label>
+                                    商品优惠价 </label>
+
+                                <div class="col-sm-9">
+                                    <input type="number" id="goodsDiscount" name="goodsDiscount" placeholder="商品优惠价"
+                                           class="col-xs-10 col-sm-5"/>
+                                </div>
+                            </div>
+
+                            <div class="space-4"></div>
+
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" for="form-field-2">
+                                    商品图片 </label>
                                 <div class="col-sm-9" id="dropzone">
-                                        <input type="hidden" value="${notice.noticeUrl}" name="noticeUrl" />
+
                                         <div class="widget-main">
                                             <input type="file" name="image" id="id-input-file-2" />
                                         </div>
+
+                                  <%--  <div class="ace-file-input">
+                                        <input type="file" name="image" id="id-input-file-2">
+                                        <label class="file-label" data-title="Choose" style="width: 350px;">
+                                            <span class="file-name" data-title="No File ...">
+                                                <i class="icon-upload-alt"></i>
+                                            </span>
+                                        </label>
+                                    </div>--%>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" for="form-field-2">
+                                    商品描述 </label>
+                                <div class="col-sm-9">
+                                    <textarea class="form-control" style="width: 350px;" id="form-field-8"
+                                              placeholder="商品描述"></textarea>
                                 </div>
                             </div>
 
                             <div class="clearfix form-actions">
                                 <div class="col-md-offset-3 col-md-9">
-                                    <button class="btn btn-info" id="editNotice" type="button">
+                                    <button class="btn btn-info" id="addGoods" type="button">
                                         <i class="icon-ok bigger-110"></i>
                                         提交
                                     </button>
@@ -144,7 +196,7 @@
 <script type="text/javascript" src="${rootURL}resources/js/jQuery.min.js"></script>
 <script type="text/javascript" src="${rootURL}resources/js/jQuery.form.js"></script>
 <script type="text/javascript" src="${rootURL}resources/js/common.js"></script>
-<script type="text/javascript" src="${rootURL}resources/js/notice/notice-edit.js"></script>
+<script type="text/javascript" src="${rootURL}resources/js/goods/goods-add.js"></script>
 <script type="text/javascript" src="${rootURL}resources/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="${rootURL}resources/js/typeahead-bs2.min.js"></script>
 <script type="text/javascript" src="${rootURL}resources/js/dropzone.min.js"></script>
