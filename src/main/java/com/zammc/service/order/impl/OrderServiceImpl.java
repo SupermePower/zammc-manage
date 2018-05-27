@@ -1,7 +1,9 @@
 package com.zammc.service.order.impl;
 
 import com.zammc.domain.order.OrderInfoEntity;
+import com.zammc.domain.order.OrderItemEntity;
 import com.zammc.page.PageBean;
+import com.zammc.repository.OrderItemRepository;
 import com.zammc.repository.OrderRepository;
 import com.zammc.service.order.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +27,9 @@ public class OrderServiceImpl implements OrderService {
 
     @Autowired
     private OrderRepository orderRepository;
+
+    @Autowired
+    private OrderItemRepository orderItemRepository;
 
     /**
      * 获取订单分页信息
@@ -85,5 +91,27 @@ public class OrderServiceImpl implements OrderService {
         OrderInfoEntity one = orderRepository.findOne(orderInfo.getOrderId());
         one.setPayStatus((byte) 2);
         orderRepository.saveAndFlush(one);
+    }
+
+    /**
+     * 获取订单详情
+     *
+     * @param orderInfo
+     * @return
+     * @throws Exception
+     */
+    public List<OrderItemEntity> queryOrderDetail(OrderInfoEntity orderInfo) throws Exception {
+        return orderItemRepository.queryOrderItem(orderInfo.getOrderId());
+    }
+
+    /**
+     * 获取订单总价
+     *
+     * @param orderInfo
+     * @return
+     * @throws Exception
+     */
+    public BigDecimal queryGoodsItemPriceSum(OrderInfoEntity orderInfo) throws Exception {
+        return orderItemRepository.queryGoodsItemPriceSum(orderInfo.getOrderId());
     }
 }

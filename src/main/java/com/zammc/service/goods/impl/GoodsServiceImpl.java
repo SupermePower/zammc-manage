@@ -123,6 +123,7 @@ public class GoodsServiceImpl implements GoodsService {
             }
             goodsEntity.setGoodsImg(img);
         }
+
         goodsEntity.setGoodsId(idWorker.nextId());
         goodsRepository.saveAndFlush(goodsEntity);
         return new Message(MessageStatus.SUCCESS, MessageTitle.成功, "添加成功");

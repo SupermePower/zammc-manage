@@ -105,7 +105,7 @@
                                     <th>分类</th>
                                     <th class="hidden-480">原价</th>
                                     <th class="hidden-480">优惠价</th>
-                                    <th class="hidden-480">订单状态</th>
+                                    <th class="hidden-480">商品状态</th>
                                     <th class="hidden-480">操作</th>
                                 </tr>
                                 </thead>
@@ -134,18 +134,22 @@
                                         </td>
                                         <td>
                                             <div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
-                                                <button class="btn btn-xs btn-success shelfGoods"
-                                                        data="${goods.goodsId}" url="/manage/goods/shelfGoods">
-                                                    <i class="icon-ok bigger-120">上架</i>
-                                                </button>
-                                                <button class="btn btn-inverse btn-xs dismountGoods"
-                                                        data="${goods.goodsId}" url="/manage/goods/dismountGoods">
-                                                    <i class="icon-lock bigger-120">下架</i>
-                                                </button>
-                                                <button class="btn btn-xs btn-danger deleteGoods"
+                                                <c:if test="${goods.goodsStatus == '1'}">
+                                                    <a class="btn btn-xs btn-success shelfGoods"
+                                                            data="${goods.goodsId}" url="/manage/goods/shelfGoods">
+                                                        <i class="icon-ok bigger-120">上架</i>
+                                                    </a>
+                                                </c:if>
+                                                <c:if test="${goods.goodsStatus == '0'}">
+                                                    <a class="btn btn-inverse btn-xs dismountGoods"
+                                                            data="${goods.goodsId}" url="/manage/goods/dismountGoods">
+                                                        <i class="icon-lock bigger-120">下架</i>
+                                                    </a>
+                                                </c:if>
+                                                <a class="btn btn-xs btn-danger deleteGoods"
                                                         data="${goods.goodsId}" url="/manage/goods/deleteGoods">
                                                     <i class="icon-trash bigger-120">删除</i>
-                                                </button>
+                                                </a>
                                             </div>
                                         </td>
                                     </tr>

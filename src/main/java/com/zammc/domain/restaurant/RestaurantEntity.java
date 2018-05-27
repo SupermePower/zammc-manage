@@ -110,4 +110,18 @@ public class RestaurantEntity {
         this.summary = summary;
     }
 
+    @Override
+    public String toString() {
+        return "RestaurantEntity{" +
+                "restaurantId=" + restaurantId +
+                ", restaurantName='" + restaurantName + '\'' +
+                ", restaurantImg='" + restaurantImg + '\'' +
+                ", restaurantCode='" + restaurantCode + '\'' +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                ", version=" + version +
+                ", dataStatus=" + dataStatus +
+                ", summary='" + summary + '\'' +
+                '}';
+    }
 }

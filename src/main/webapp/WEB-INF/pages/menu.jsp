@@ -123,6 +123,24 @@
         </a>
     </li>
 
+    <li>
+        <a href="http://localhost:7500/manage/restaurant/queryRestaurantPage" class="dropdown-toggle">
+            <i class="icon-edit"></i>
+            <span class="menu-text"> 店家管理 </span>
+
+            <b class="arrow icon-angle-down"></b>
+        </a>
+    </li>
+
+    <li>
+        <a href="http://localhost:7500/manage/reserve/queryReservePage" class="dropdown-toggle">
+            <i class="icon-edit"></i>
+            <span class="menu-text"> 预约管理 </span>
+
+            <b class="arrow icon-angle-down"></b>
+        </a>
+    </li>
+
 </ul><!-- /.nav-list -->
 
 <div class="sidebar-collapse" id="sidebar-collapse">

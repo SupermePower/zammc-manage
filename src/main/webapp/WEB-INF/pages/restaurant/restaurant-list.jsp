@@ -4,7 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
-    <title>订单管理</title>
+    <title>店家信息管理</title>
     <link rel="stylesheet" href='${rootURL}resources/css/ace.min.css'/>
     <link rel="stylesheet" href="${rootURL}resources/css/ace-rtl.min.css"/>
     <link rel="stylesheet" href="${rootURL}resources/css/ace-skins.min.css"/>
@@ -67,24 +67,14 @@
                     </li>
                     <li class="active">控制台</li>
                 </ul><!-- .breadcrumb -->
-
-                <div class="nav-search" id="nav-search">
-                    <form class="form-search">
-								<span class="input-icon">
-									<input type="text" placeholder="订单号" class="nav-search-input"
-                                           id="nav-search-input" autocomplete="off"/>
-									<i class="icon-search nav-search-icon"></i>
-								</span>
-                    </form>
-                </div><!-- #nav-search -->
             </div>
 
             <div class="page-content">
                 <div class="row">
                     <div class="col-xs-12">
-                        <h3 class="header smaller lighter blue">订单列表</h3>
+                        <h3 class="header smaller lighter blue">店家信息</h3>
                         <div class="table-header">
-                            订单信息
+                            店家信息
                         </div>
 
                         <div class="table-responsive">
@@ -97,19 +87,17 @@
                                             <span class="lbl"></span>
                                         </label>
                                     </th>
-                                    <th>订单号</th>
-                                    <th>总价</th>
-                                    <th class="hidden-480">桌号</th>
+                                    <th>店家名称</th>
+                                    <th class="hidden-480">店家图片</th>
                                     <th>
                                         <i class="icon-time bigger-110 hidden-480"></i>
-                                        下单时间
+                                        店家编码
                                     </th>
-                                    <th class="hidden-480">订单状态</th>
                                     <th class="hidden-480">操作</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    <c:forEach var="order" items="${ page.content}" varStatus="in">
+                                    <c:forEach var="restaurant" items="${ page.content}" varStatus="in">
                                         <tr>
                                             <td class="center">
                                                 <label>
@@ -117,33 +105,13 @@
                                                     <span class="lbl"></span>
                                                 </label>
                                             </td>
-                                            <td>
-                                                <a href="/manage/order/queryOrderDetail?orderId=${order.orderId}">${order.orderId}</a>
-                                            </td>
-                                            <td>${order.totalprice}</td>
-                                            <td class="hidden-480">${order.tableNum}</td>
-                                            <td>${order.createTime}</td>
+                                            <td>${restaurant.restaurantName}</td>
+                                            <td>${restaurant.restaurantImg}</td>
+                                            <td class="hidden-480">${restaurant.restaurantCode}</td>
                                             <td class="hidden-480">
-                                                <c:if test="${order.payStatus == '0'}">
-                                                    <span class="label label-sm label-warning">待支付</span>
-                                                </c:if>
-                                                <c:if test="${order.payStatus == '1'}">
-                                                    <span class="label label-sm label-success">已支付</span>
-                                                </c:if>
-                                                <c:if test="${order.payStatus == '2'}">
-                                                    <span class="label label-sm label-inverse arrowed-in">已取消</span>
-                                                </c:if>
-                                            </td>
-                                            <td>
                                                 <div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
-                                                    <a class="btn btn-xs btn-success finishOrder" data="${order.orderId}" url="/manage/order/finishOrder">
-                                                        <i class="icon-ok bigger-120">完成</i>
-                                                    </a>
-                                                    <a class="btn btn-danger btn-xs cancelOrder" data="${order.orderId}" url="/manage/order/cancelOrder">
-                                                        <i class="icon-reply bigger-120">取消</i>
-                                                    </a>
-                                                    <a class="btn btn-xs btn-danger deleteOrder" data="${order.orderId}" url="/manage/order/deleteOrder">
-                                                        <i class="icon-trash bigger-120">删除</i>
+                                                    <a class="btn btn-xs btn-danger toEdit" href="/manage/restaurant/toEdit?restaurantId=${restaurant.restaurantId}">
+                                                        <i class="icon-trash bigger-120">编辑</i>
                                                     </a>
                                                 </div>
                                             </td>
@@ -168,5 +136,4 @@
 <script type="text/javascript" src="${rootURL}resources/js/jQuery.min.js"></script>
 <script type="text/javascript" src="${rootURL}resources/js/jQuery.form.js"></script>
 <script type="text/javascript" src="${rootURL}resources/js/common.js"></script>
-<script type="text/javascript" src="${rootURL}resources/js/order/order-list.js"></script>
 </html>

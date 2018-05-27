@@ -14,7 +14,7 @@ import java.sql.Timestamp;
 public class OrderItemEntity {
     private long itemId;
     private long orderId;
-    private long userId;
+    private String userId;
     private long goodsId;
     private String goodsType;
     private String goodsName;
@@ -51,11 +51,11 @@ public class OrderItemEntity {
 
     @Basic
     @Column(name = "user_id")
-    public long getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(long userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 
