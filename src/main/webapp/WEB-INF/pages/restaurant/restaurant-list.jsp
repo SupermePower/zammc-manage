@@ -106,7 +106,7 @@
                                                 </label>
                                             </td>
                                             <td>${restaurant.restaurantName}</td>
-                                            <td>${restaurant.restaurantImg}</td>
+                                            <td><img class="img-data" src="${restaurant.restaurantImg}" alt=""></td>
                                             <td class="hidden-480">${restaurant.restaurantCode}</td>
                                             <td class="hidden-480">
                                                 <div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">

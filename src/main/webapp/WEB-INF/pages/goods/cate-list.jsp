@@ -118,7 +118,7 @@
                                             </label>
                                         </td>
                                         <td>${goodsCate.cateName}</td>
-                                        <td>${goodsCate.cateIcon}</td>
+                                        <td><img class="img-data" src="${goodsCate.cateIcon}" /></td>
                                         <td class="hidden-480">${goodsCate.sort}</td>
                                         <td class="hidden-480">
                                             <c:if test="${goodsCate.status == '1'}">

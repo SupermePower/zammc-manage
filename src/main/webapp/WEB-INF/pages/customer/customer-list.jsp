@@ -115,7 +115,7 @@
                                             <td>
                                                 <a href="#">${customer.nickName}</a>
                                             </td>
-                                            <td>${customer.avatarUrl}</td>
+                                            <td><img class="img-data" src="${customer.avatarUrl}" alt=""></td>
                                             <td class="hidden-480">${customer.gender}</td>
                                             <td>
                                                 <div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">

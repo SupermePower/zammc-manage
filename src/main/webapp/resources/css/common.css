@@ -683,3 +683,8 @@ body{
 	line-height: 22px;
 }
 
+.img-data{
+	border: 0;
+	width: 100px;
+	height: 23px;
+}

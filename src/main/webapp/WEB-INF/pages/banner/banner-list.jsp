@@ -117,10 +117,8 @@
                                                 <span class="lbl"></span>
                                             </label>
                                         </td>
-                                        <td>
-                                                ${banner.bannerName}
-                                        </td>
-                                        <td>${banner.bannerUrl}</td>
+                                        <td>${banner.bannerName}</td>
+                                        <td><img class="img-data" src="${banner.bannerUrl}" alt=""></td>
                                         <td class="hidden-480">${banner.bannerSort}</td>
                                         <td class="hidden-480">
                                             <c:if test="${banner.bannerStatus == '1'}">

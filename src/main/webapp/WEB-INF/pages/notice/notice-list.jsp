@@ -120,7 +120,7 @@
                                             <td>
                                                ${notice.noticeName}
                                             </td>
-                                            <td>${notice.noticeUrl}</td>
+                                            <td><img class="img-data" src="${notice.noticeUrl}" alt=""></td>
                                             <td class="hidden-480">${notice.noticeSort}</td>
                                             <td class="hidden-480">
                                                 <c:if test="${notice.noticeStatus == '1'}">
