@@ -111,4 +111,18 @@ public class GoodsCateEntity {
         this.dataStatus = dataStatus;
     }
 
+    @Override
+    public String toString() {
+        return "GoodsCateEntity{" +
+                "cateId=" + cateId +
+                ", cateIcon='" + cateIcon + '\'' +
+                ", cateName='" + cateName + '\'' +
+                ", sort=" + sort +
+                ", status=" + status +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                ", version=" + version +
+                ", dataStatus=" + dataStatus +
+                '}';
+    }
 }

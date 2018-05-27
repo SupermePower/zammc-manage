@@ -79,14 +79,15 @@
             <div class="page-content">
                 <div class="row">
                     <div class="col-xs-12">
-                        <h3 class="header smaller lighter blue">新增商品分类</h3>
-                        <form class="form-horizontal add-cate-form" action="${ctx}/manage/goodsCate/addGoodsCate" method="post"
+                        <h3 class="header smaller lighter blue">编辑商品</h3>
+                        <form class="form-horizontal edit-goods-cate-form" action="${ctx}/manage/goodsCate/editGoodsCate" method="post"
                               enctype="multipart/form-data" role="form">
+                            <input type="hidden" name="cateId" value="${goodsCate.cateId}">
                             <div class="form-group">
                                 <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 分类名称 </label>
 
                                 <div class="col-sm-9">
-                                    <input type="text" id="form-field-1" name="cateName" placeholder="分类名称"
+                                    <input type="text" id="form-field-1" name="cateName" placeholder="分类名称" value="${goodsCate.cateName}"
                                            class="col-xs-10 col-sm-5"/>
                                 </div>
                             </div>
@@ -94,10 +95,10 @@
                             <div class="space-4"></div>
 
                             <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="form-field-2"> 展示顺序 </label>
+                                <label class="col-sm-3 control-label no-padding-right" for="form-field-2"> 分类顺序 </label>
 
                                 <div class="col-sm-9">
-                                    <input type="number" id="form-field-2" name="sort" placeholder="展示顺序"
+                                    <input type="number" id="form-field-2" name="sort" placeholder="分类顺序" value="${goodsCate.sort}"
                                            class="col-xs-10 col-sm-5"/>
                                 </div>
                             </div>
@@ -108,16 +109,17 @@
                                 <label class="col-sm-3 control-label no-padding-right" for="form-field-2">
                                     分类图片 </label>
                                 <div class="col-sm-9" id="dropzone">
-
+                                        <input type="hidden" name="cateIcon" value="${goodsCate.cateIcon}">
                                         <div class="widget-main">
                                             <input type="file" name="image" id="id-input-file-2" />
                                         </div>
+
                                 </div>
                             </div>
 
                             <div class="clearfix form-actions">
                                 <div class="col-md-offset-3 col-md-9">
-                                    <button class="btn btn-info" id="addGoodsCate" type="button">
+                                    <button class="btn btn-info" id="editGoodsCate" type="button">
                                         <i class="icon-ok bigger-110"></i>
                                         提交
                                     </button>
@@ -144,7 +146,7 @@
 <script type="text/javascript" src="${rootURL}resources/js/jQuery.min.js"></script>
 <script type="text/javascript" src="${rootURL}resources/js/jQuery.form.js"></script>
 <script type="text/javascript" src="${rootURL}resources/js/common.js"></script>
-<script type="text/javascript" src="${rootURL}resources/js/goods/cate-add.js"></script>
+<script type="text/javascript" src="${rootURL}resources/js/goods/cate-edit.js"></script>
 <script type="text/javascript" src="${rootURL}resources/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="${rootURL}resources/js/typeahead-bs2.min.js"></script>
 <script type="text/javascript" src="${rootURL}resources/js/dropzone.min.js"></script>

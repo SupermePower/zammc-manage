@@ -137,4 +137,49 @@ public class GoodsCateServiceImpl implements GoodsCateService {
         goodsCateRepository.saveAndFlush(goodsCateEntity);
         return new Message(MessageStatus.SUCCESS, MessageTitle.成功, "新增成功");
     }
+
+    /**
+     * 根据主键获取分类信息
+     *
+     * @param goodsCateEntity
+     * @return
+     * @throws Exception
+     */
+    public GoodsCateEntity queryGoodsCateById(GoodsCateEntity goodsCateEntity) throws Exception {
+        return goodsCateRepository.findOne(goodsCateEntity.getCateId());
+    }
+
+    /**
+     * 修改商品分类信息
+     * @param goodsCateEntity
+     * @param request
+     * @return
+     * @throws Exception
+     */
+    public Message editGoodsCate(GoodsCateEntity goodsCateEntity, HttpServletRequest request) throws Exception {
+        if (null == goodsCateEntity.getCateName() || "".equals(goodsCateEntity.getCateName())) {
+            return new Message(MessageStatus.FAIL, MessageTitle.失败, "分类名称不能为空");
+        }
+        if (null == goodsCateEntity.getSort()) {
+            return new Message(MessageStatus.FAIL, MessageTitle.失败, "分类显示顺序不能为空");
+        }
+        GoodsCateEntity one = goodsCateRepository.findOne(goodsCateEntity.getCateId());
+        if (null == goodsCateEntity.getCateIcon() && goodsCateEntity.getCateIcon() != one.getCateIcon()) {
+            MultipartHttpServletRequest mreq = (MultipartHttpServletRequest) request;
+            MultipartFile image = mreq.getFile("image");
+            if (image == null) {
+                return new Message(MessageStatus.FAIL, MessageTitle.失败, "上传图片不能为空");
+            } else {
+                String img = "";
+                try {
+                    img = FileUtil.uploadFile(image.getInputStream());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                goodsCateEntity.setCateIcon(img);
+            }
+        }
+        goodsCateRepository.saveAndFlush(goodsCateEntity);
+        return new Message(MessageStatus.SUCCESS, MessageTitle.成功, "修改成功");
+    }
 }

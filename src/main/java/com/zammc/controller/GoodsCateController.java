@@ -70,6 +70,50 @@ public class GoodsCateController {
     @ResponseBody
     public Message addGoodsCate(GoodsCateEntity goodsCateEntity, HttpServletRequest request) {
         Message message = null;
+        try {
+            message = goodsCateService.addGoodsCate(goodsCateEntity, request);
+        } catch (Exception e) {
+            log.error("GoodsCateController addGoodsCate goodsCate -> {} Exception", goodsCateEntity.toString(), e);
+            message = new Message(MessageStatus.FAIL, MessageTitle.失败, "新增失败");
+        }
+        return message;
+    }
+
+    /**
+     * 跳转到编辑页面
+     *
+     * @param goodsCateEntity
+     * @return
+     */
+    @RequestMapping(value = "/toEdit")
+    public ModelAndView toEdit(GoodsCateEntity goodsCateEntity) {
+        ModelAndView modelAndView = new ModelAndView("goods/cate-edit");
+        try {
+            GoodsCateEntity goodsCate = goodsCateService.queryGoodsCateById(goodsCateEntity);
+            modelAndView.addObject("goodsCate", goodsCate);
+        } catch (Exception e) {
+            log.error("GoodsCateController toEdit cateId -> {} Exception", goodsCateEntity.getCateId(), e);
+        }
+        return modelAndView;
+    }
+
+    /**
+     * 修改分类信息
+     *
+     * @param goodsCateEntity
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "/editGoodsCate")
+    @ResponseBody
+    public Message editGoodsCate(GoodsCateEntity goodsCateEntity, HttpServletRequest request) {
+        Message message = null;
+        try {
+            message = goodsCateService.editGoodsCate(goodsCateEntity, request);
+        } catch (Exception e) {
+            log.error("GoodsCateController editGoodsCate goodsCate -> {} Exception \n", goodsCateEntity.toString(), e);
+            message = new Message(MessageStatus.FAIL, MessageTitle.失败, "修改失败");
+        }
         return message;
     }
 

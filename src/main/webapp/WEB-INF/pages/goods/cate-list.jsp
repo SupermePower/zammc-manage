@@ -104,7 +104,7 @@
                                     <th>分类名称</th>
                                     <th>分类图标</th>
                                     <th class="hidden-480">顺序</th>
-                                    <th class="hidden-480">订单状态</th>
+                                    <th class="hidden-480">分类状态</th>
                                     <th class="hidden-480">操作</th>
                                 </tr>
                                 </thead>
@@ -142,6 +142,9 @@
                                                         <i class="icon-lock bigger-120">禁用</i>
                                                     </a>
                                                 </c:if>
+                                                <a href="/manage/goodsCate/toEdit?cateId=${goodsCate.cateId}" class="btn btn-xs btn-primary no-radius">
+                                                    <i class="icon-edit bigger-120">编辑</i>
+                                                </a>
                                                 <a class="btn btn-xs btn-danger deleteGoodsCate"
                                                         data="${goodsCate.cateId}" url="/manage/goodsCate/deleteGoodsCate">
                                                     <i class="icon-trash bigger-120">删除</i>

@@ -55,4 +55,22 @@ public interface GoodsCateService {
      * @throws Exception
      */
     Message addGoodsCate(GoodsCateEntity goodsCateEntity, HttpServletRequest request) throws Exception;
+
+    /**
+     * 根据主键获取分类信息
+     *
+     * @param goodsCateEntity
+     * @return
+     * @throws Exception
+     */
+    GoodsCateEntity queryGoodsCateById(GoodsCateEntity goodsCateEntity) throws Exception;
+
+    /**
+     * 修改商品分类信息
+     * @param goodsCateEntity
+     * @param request
+     * @return
+     * @throws Exception
+     */
+    Message editGoodsCate(GoodsCateEntity goodsCateEntity, HttpServletRequest request) throws Exception;
 }
