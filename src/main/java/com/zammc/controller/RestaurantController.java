@@ -83,4 +83,44 @@ public class RestaurantController {
         }
         return message;
     }
+
+    /**
+     * 修改店家状态-营业
+     *
+     * @param restaurantEntity
+     * @return
+     */
+    @RequestMapping(value = "/editRestaurantBusiness")
+    @ResponseBody
+    public Message editRestaurantBusiness(RestaurantEntity restaurantEntity) {
+        Message message = null;
+        try {
+            restaurantService.editRestaurantBusiness(restaurantEntity);
+            message = new Message(MessageStatus.SUCCESS, MessageTitle.成功, "操作成功");
+        } catch (Exception e) {
+            log.error("RestaurantController editRestaurantBusiness restaurantId -> {} Exception \n", restaurantEntity.getRestaurantId(), e);
+            message = new Message(MessageStatus.FAIL, MessageTitle.失败, "操作失败");
+        }
+        return message;
+    }
+
+    /**
+     * 修改店家状态-休息
+     *
+     * @param restaurantEntity
+     * @return
+     */
+    @RequestMapping(value = "/editRestaurantRest")
+    @ResponseBody
+    public Message editRestaurantRest(RestaurantEntity restaurantEntity) {
+        Message message = null;
+        try {
+            restaurantService.editRestaurantRest(restaurantEntity);
+            message = new Message(MessageStatus.SUCCESS, MessageTitle.成功, "操作成功");
+        } catch (Exception e) {
+            log.error("RestaurantController editRestaurantRest restaurantId -> {} Exception \n", restaurantEntity.getRestaurantId(), e);
+            message = new Message(MessageStatus.FAIL, MessageTitle.失败, "操作失败");
+        }
+        return message;
+    }
 }

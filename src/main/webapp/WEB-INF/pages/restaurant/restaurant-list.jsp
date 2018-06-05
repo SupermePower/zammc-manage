@@ -97,29 +97,44 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    <c:forEach var="restaurant" items="${ page.content}" varStatus="in">
-                                        <tr>
-                                            <td class="center">
-                                                <label>
-                                                    <input type="checkbox" class="ace"/>
-                                                    <span class="lbl"></span>
-                                                </label>
-                                            </td>
-                                            <td>${restaurant.restaurantName}</td>
-                                            <td><img class="img-data" src="${restaurant.restaurantImg}" alt=""></td>
-                                            <td class="hidden-480">${restaurant.restaurantCode}</td>
-                                            <td class="hidden-480">
-                                                <div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
-                                                    <a class="btn btn-xs btn-danger toEdit" href="/manage/restaurant/toEdit?restaurantId=${restaurant.restaurantId}">
-                                                        <i class="icon-trash bigger-120">编辑</i>
+                                <c:forEach var="restaurant" items="${ page.content}" varStatus="in">
+                                    <tr>
+                                        <td class="center">
+                                            <label>
+                                                <input type="checkbox" class="ace"/>
+                                                <span class="lbl"></span>
+                                            </label>
+                                        </td>
+                                        <td>${restaurant.restaurantName}</td>
+                                        <td><img class="img-data" src="${restaurant.restaurantImg}" alt=""></td>
+                                        <td class="hidden-480">${restaurant.restaurantCode}</td>
+                                        <td class="hidden-480">
+                                            <div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
+                                                <c:if test="${restaurant.status == 0}">
+                                                    <a class="btn btn-xs btn-success editRestaurantBusiness"
+                                                       data="${restaurant.restaurantId}"
+                                                       url="/manage/restaurant/editRestaurantBusiness">
+                                                        <i class="icon-ok bigger-120">营业</i>
                                                     </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </c:forEach>
+                                                </c:if>
+                                                <c:if test="${restaurant.status == 1}">
+                                                    <a class="btn btn-inverse btn-xs editRestaurantRest"
+                                                       data="${restaurant.restaurantId}"
+                                                       url="/manage/restaurant/editRestaurantRest">
+                                                        <i class="icon-lock bigger-120">休息</i>
+                                                    </a>
+                                                </c:if>
+                                                <a class="btn btn-xs btn-danger toEdit"
+                                                   href="/manage/restaurant/toEdit?restaurantId=${restaurant.restaurantId}">
+                                                    <i class="icon-trash bigger-120">编辑</i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
                                 </tbody>
                             </table>
-                            <jsp:include page="../page.jsp" flush="true" />
+                            <jsp:include page="../page.jsp" flush="true"/>
                         </div>
                     </div>
                 </div><!-- /.row -->
@@ -136,4 +151,5 @@
 <script type="text/javascript" src="${rootURL}resources/js/jQuery.min.js"></script>
 <script type="text/javascript" src="${rootURL}resources/js/jQuery.form.js"></script>
 <script type="text/javascript" src="${rootURL}resources/js/common.js"></script>
+<script type="text/javascript" src="${rootURL}resources/js/restaurant/restaurant-list.js"></script>
 </html>

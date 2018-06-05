@@ -17,6 +17,7 @@ public class RestaurantEntity {
     private Timestamp updateTime;
     private int version;
     private byte dataStatus;
+    private byte status;
     private String summary;
 
     @Id
@@ -101,6 +102,16 @@ public class RestaurantEntity {
     }
 
     @Basic
+    @Column(name = "status")
+    public byte getStatus() {
+        return status;
+    }
+
+    public void setStatus(byte status) {
+        this.status = status;
+    }
+
+    @Basic
     @Column(name = "summary")
     public String getSummary() {
         return summary;
@@ -121,6 +132,7 @@ public class RestaurantEntity {
                 ", updateTime=" + updateTime +
                 ", version=" + version +
                 ", dataStatus=" + dataStatus +
+                ", status=" + status +
                 ", summary='" + summary + '\'' +
                 '}';
     }

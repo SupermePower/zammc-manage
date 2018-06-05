@@ -38,4 +38,20 @@ public interface RestaurantService {
      * @throws Exception
      */
     Message editRestaurant(RestaurantEntity restaurantEntity, HttpServletRequest request) throws Exception;
+
+    /**
+     * 修改商家状态-营业
+     *
+     * @param restaurantEntity
+     * @throws Exception
+     */
+    void editRestaurantBusiness(RestaurantEntity restaurantEntity) throws Exception;
+
+    /**
+     * 修改商家状态-休息
+     *
+     * @param restaurantEntity
+     * @throws Exception
+     */
+    void editRestaurantRest(RestaurantEntity restaurantEntity) throws Exception;
 }

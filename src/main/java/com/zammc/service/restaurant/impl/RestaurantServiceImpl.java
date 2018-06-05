@@ -102,4 +102,32 @@ public class RestaurantServiceImpl implements RestaurantService {
         restaurantRepository.saveAndFlush(one);
         return new Message(MessageStatus.SUCCESS, MessageTitle.成功, "修改成功");
     }
+
+    /**
+     * 修改商家状态-营业
+     *
+     * @param restaurantEntity
+     * @throws Exception
+     */
+    public void editRestaurantBusiness(RestaurantEntity restaurantEntity) throws Exception {
+        RestaurantEntity one = restaurantRepository.findOne(restaurantEntity.getRestaurantId());
+        if (one.getDataStatus() != 0 && one.getStatus() == 0) {
+            one.setStatus((byte) 1);
+            restaurantRepository.saveAndFlush(one);
+        }
+    }
+
+    /**
+     * 修改商家状态-休息
+     *
+     * @param restaurantEntity
+     * @throws Exception
+     */
+    public void editRestaurantRest(RestaurantEntity restaurantEntity) throws Exception {
+        RestaurantEntity one = restaurantRepository.findOne(restaurantEntity.getRestaurantId());
+        if (one.getDataStatus() != 0 && one.getStatus() == 1) {
+            one.setStatus((byte) 0);
+            restaurantRepository.saveAndFlush(one);
+        }
+    }
 }
