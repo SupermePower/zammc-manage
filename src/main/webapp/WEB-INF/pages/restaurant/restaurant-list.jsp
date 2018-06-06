@@ -90,9 +90,9 @@
                                     <th>店家名称</th>
                                     <th class="hidden-480">店家图片</th>
                                     <th>
-                                        <i class="icon-time bigger-110 hidden-480"></i>
                                         店家编码
                                     </th>
+                                    <th>店家状态</th>
                                     <th class="hidden-480">操作</th>
                                 </tr>
                                 </thead>
@@ -108,6 +108,14 @@
                                         <td>${restaurant.restaurantName}</td>
                                         <td><img class="img-data" src="${restaurant.restaurantImg}" alt=""></td>
                                         <td class="hidden-480">${restaurant.restaurantCode}</td>
+                                        <td class="hidden-480">
+                                            <c:if test="${restaurant.status == '1'}">
+                                                <span class="label label-sm label-success">营业中</span>
+                                            </c:if>
+                                            <c:if test="${restaurant.status == '0'}">
+                                                <span class="label label-sm label-inverse arrowed-in">休息</span>
+                                            </c:if>
+                                        </td>
                                         <td class="hidden-480">
                                             <div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
                                                 <c:if test="${restaurant.status == 0}">

@@ -81,7 +81,7 @@ public class RestaurantServiceImpl implements RestaurantService {
             return new Message(MessageStatus.FAIL, MessageTitle.失败, "店家编码不能为空");
         }
         RestaurantEntity one = restaurantRepository.findOne(restaurantEntity.getRestaurantId());
-        if (null == restaurantEntity.getRestaurantImg() || !restaurantEntity.getRestaurantImg().equals(one.getRestaurantImg())) {
+        if ("".equals(restaurantEntity.getRestaurantImg()) || null == restaurantEntity.getRestaurantImg() || !restaurantEntity.getRestaurantImg().equals(one.getRestaurantImg())) {
             MultipartHttpServletRequest mreq = (MultipartHttpServletRequest) request;
             MultipartFile image = mreq.getFile("image");
             if (image == null) {

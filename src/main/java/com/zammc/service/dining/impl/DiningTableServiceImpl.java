@@ -67,6 +67,8 @@ public class DiningTableServiceImpl implements DiningTableService {
             return new Message(MessageStatus.FAIL, MessageTitle.失败, "餐位编码不能为空");
         }
         diningTableEntity.setTableId(idWorker.nextId());
+        diningTableEntity.setTableStatus((byte) 1);
+        diningTableEntity.setDataStatus((byte) 1);
         diningTableRepository.saveAndFlush(diningTableEntity);
         return new Message(MessageStatus.SUCCESS, MessageTitle.成功, "新增成功");
     }
