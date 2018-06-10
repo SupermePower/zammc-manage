@@ -164,10 +164,12 @@ public class NoticeServiceImpl implements NoticeService {
          * 2：上传图片是否为null
          * 3：上传图片是否为空串
          */
-        if (!noticeEntity.getNoticeUrl().equals(notice.getNoticeUrl()) || "".equals(notice.getNoticeUrl()) || null == notice.getNoticeUrl()) {
+        if ("".equals(notice.getNoticeUrl()) || null == notice.getNoticeUrl()) {
             MultipartHttpServletRequest mreq = (MultipartHttpServletRequest) request;
             MultipartFile image = mreq.getFile("image");
             if (checkNoticeImage(notice, image)) return new Message(MessageStatus.FAIL, MessageTitle.失败, "上传图片不能为空");
+        } else {
+            notice.setNoticeUrl(noticeEntity.getNoticeUrl());
         }
         notice.setNoticeName(noticeEntity.getNoticeName());
         notice.setNoticeSort(noticeEntity.getNoticeSort());

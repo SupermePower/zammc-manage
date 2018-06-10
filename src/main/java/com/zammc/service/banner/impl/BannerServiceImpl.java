@@ -129,14 +129,15 @@ public class BannerServiceImpl implements BannerService {
         }
         BannerEntity banner = bannerRepository.findOne(bannerEntity.getBannerId());
         /*
-         * 1：上传图片原有图片是否相等
          * 2：上传图片是否为null
          * 3：上传图片是否为空串
          */
-        if (!bannerEntity.getBannerUrl().equals(banner.getBannerUrl()) || "".equals(banner.getBannerUrl()) || null == banner.getBannerUrl()) {
+        if ("".equals(bannerEntity.getBannerUrl()) || null == bannerEntity.getBannerUrl()) {
             MultipartHttpServletRequest mreq = (MultipartHttpServletRequest) request;
             MultipartFile image = mreq.getFile("image");
             if (checkBannerImage(banner, image)) return new Message(MessageStatus.FAIL, MessageTitle.失败, "上传图片不能为空");
+        } else {
+            banner.setBannerUrl(bannerEntity.getBannerUrl());
         }
         banner.setBannerName(bannerEntity.getBannerName());
         banner.setBannerSort(bannerEntity.getBannerSort());

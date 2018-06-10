@@ -108,9 +108,9 @@
                                 <label class="col-sm-3 control-label no-padding-right" for="form-field-2">
                                     公告图片 </label>
                                 <div class="col-sm-9" id="dropzone">
-                                        <input type="hidden" value="${notice.noticeUrl}" name="noticeUrl" />
+                                        <input type="hidden" class="oldImage" value="${notice.noticeUrl}" name="noticeUrl" />
                                         <div class="widget-main">
-                                            <input type="file" name="image" id="id-input-file-2" />
+                                            <input type="file" class="setImage" name="image" id="id-input-file-2" />
                                         </div>
                                 </div>
                             </div>

@@ -108,9 +108,9 @@
                                 <label class="col-sm-3 control-label no-padding-right" for="form-field-2">
                                     banner图片 </label>
                                 <div class="col-sm-9" id="dropzone">
-                                        <input type="hidden" value="${banner.bannerUrl}" name="bannerUrl" />
+                                        <input type="hidden" class="oldImage" value="${banner.bannerUrl}" name="bannerUrl" />
                                         <div class="widget-main">
-                                            <input type="file" name="image" id="id-input-file-2" />
+                                            <img src="${banner.bannerUrl}" style="width: 100px; height: 50px;" title="${banner.bannerName}" /><input type="file" name="image" class="setImage" id="id-input-file-2" />
                                         </div>
                                 </div>
                             </div>
