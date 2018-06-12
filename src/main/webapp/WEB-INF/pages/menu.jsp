@@ -36,14 +36,14 @@
 
 <ul class="nav nav-list">
     <li class="active">
-        <a href="http://localhost:7500/manage">
+        <a href="https://www.sxmbyd.com/manage">
             <i class="icon-dashboard"></i>
             <span class="menu-text"> 控制台 </span>
         </a>
     </li>
 
     <li>
-        <a href="http://localhost:7500/manage/goods/queryGoodsPage" class="dropdown-toggle">
+        <a href="https://www.sxmbyd.com/manage/goods/queryGoodsPage" class="dropdown-toggle">
             <i class="icon-edit"></i>
             <span class="menu-text"> 商品管理 </span>
 
@@ -52,7 +52,7 @@
     </li>
 
     <li>
-        <a href="http://localhost:7500/manage/goodsCate/queryGoodsCatePage" class="dropdown-toggle">
+        <a href="https://www.sxmbyd.com/manage/goodsCate/queryGoodsCatePage" class="dropdown-toggle">
             <i class="icon-edit"></i>
             <span class="menu-text"> 商品分类 </span>
 
@@ -61,7 +61,7 @@
     </li>
 
     <li>
-        <a href="http://localhost:7500/manage/order/queryOrderPage" class="dropdown-toggle">
+        <a href="https://www.sxmbyd.com/manage/order/queryOrderPage" class="dropdown-toggle">
             <i class="icon-edit"></i>
             <span class="menu-text"> 订单管理 </span>
 
@@ -70,7 +70,7 @@
     </li>
 
     <li>
-        <a href="http://localhost:7500/manage/recharge/queryRechargeOrderPage" class="dropdown-toggle">
+        <a href="https://www.sxmbyd.com/manage/recharge/queryRechargeOrderPage" class="dropdown-toggle">
             <i class="icon-edit"></i>
             <span class="menu-text"> 充值管理 </span>
 
@@ -79,7 +79,7 @@
     </li>
 
     <li>
-        <a href="http://localhost:7500/manage/rechargePackage/queryRechargePackagePage" class="dropdown-toggle">
+        <a href="https://www.sxmbyd.com/manage/rechargePackage/queryRechargePackagePage" class="dropdown-toggle">
             <i class="icon-edit"></i>
             <span class="menu-text"> 充值套餐管理 </span>
 
@@ -88,7 +88,7 @@
     </li>
 
     <li>
-        <a href="http://localhost:7500/manage/banner/queryBannerPage" class="dropdown-toggle">
+        <a href="https://www.sxmbyd.com/manage/banner/queryBannerPage" class="dropdown-toggle">
             <i class="icon-edit"></i>
             <span class="menu-text"> banner管理 </span>
 
@@ -97,7 +97,7 @@
     </li>
 
     <li>
-        <a href="http://localhost:7500/manage/notice/queryNoticePage" class="dropdown-toggle">
+        <a href="https://www.sxmbyd.com/manage/notice/queryNoticePage" class="dropdown-toggle">
             <i class="icon-edit"></i>
             <span class="menu-text"> 公告管理 </span>
 
@@ -106,7 +106,7 @@
     </li>
 
     <li>
-        <a href="http://localhost:7500/manage/customer/queryCustomerPage" class="dropdown-toggle">
+        <a href="https://www.sxmbyd.com/manage/customer/queryCustomerPage" class="dropdown-toggle">
             <i class="icon-edit"></i>
             <span class="menu-text"> 顾客管理 </span>
 
@@ -115,7 +115,7 @@
     </li>
 
     <li>
-        <a href="http://localhost:7500/manage/diningTable/queryDiningTablePage" class="dropdown-toggle">
+        <a href="https://www.sxmbyd.com/manage/diningTable/queryDiningTablePage" class="dropdown-toggle">
             <i class="icon-edit"></i>
             <span class="menu-text"> 餐位管理 </span>
 
@@ -124,7 +124,7 @@
     </li>
 
     <li>
-        <a href="http://localhost:7500/manage/restaurant/queryRestaurantPage" class="dropdown-toggle">
+        <a href="https://www.sxmbyd.com/manage/restaurant/queryRestaurantPage" class="dropdown-toggle">
             <i class="icon-edit"></i>
             <span class="menu-text"> 店家管理 </span>
 
@@ -133,7 +133,7 @@
     </li>
 
     <li>
-        <a href="http://localhost:7500/manage/reserve/queryReservePage" class="dropdown-toggle">
+        <a href="https://www.sxmbyd.com/manage/reserve/queryReservePage" class="dropdown-toggle">
             <i class="icon-edit"></i>
             <span class="menu-text"> 预约管理 </span>
 
