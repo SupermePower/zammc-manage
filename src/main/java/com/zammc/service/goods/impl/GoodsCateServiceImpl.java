@@ -134,6 +134,7 @@ public class GoodsCateServiceImpl implements GoodsCateService {
             goodsCateEntity.setCateIcon(img);
         }
         goodsCateEntity.setCateId(idWorker.nextId());
+        goodsCateEntity.setDataStatus((byte) 1);
         goodsCateRepository.saveAndFlush(goodsCateEntity);
         return new Message(MessageStatus.SUCCESS, MessageTitle.成功, "新增成功");
     }
@@ -151,6 +152,7 @@ public class GoodsCateServiceImpl implements GoodsCateService {
 
     /**
      * 修改商品分类信息
+     *
      * @param goodsCateEntity
      * @param request
      * @return
@@ -181,5 +183,15 @@ public class GoodsCateServiceImpl implements GoodsCateService {
         }
         goodsCateRepository.saveAndFlush(goodsCateEntity);
         return new Message(MessageStatus.SUCCESS, MessageTitle.成功, "修改成功");
+    }
+
+    /**
+     * 获取商品分类列表
+     *
+     * @return
+     * @throws Exception
+     */
+    public List<GoodsCateEntity> queryCateList() throws Exception {
+        return goodsCateRepository.queryCateList();
     }
 }

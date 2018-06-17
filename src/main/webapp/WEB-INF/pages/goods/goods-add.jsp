@@ -97,8 +97,11 @@
                                 <label class="col-sm-3 control-label no-padding-right" for="form-field-2"> 商品分类 </label>
 
                                 <div class="col-sm-9">
-                                    <input type="text" id="form-field-2" name="goodsCate" placeholder="商品分类"
-                                           class="col-xs-10 col-sm-5"/>
+                                    <select name="goodsCate" id="form-field-2">
+                                        <c:forEach items="${cateList}" var="cate">
+                                            <option value="${cate.cateId}">${cate.cateName}</option>
+                                        </c:forEach>
+                                    </select>
                                 </div>
                             </div>
 
@@ -108,8 +111,12 @@
                                 <label class="col-sm-3 control-label no-padding-right" for="form-field-2"> 商品类型 </label>
 
                                 <div class="col-sm-9">
-                                    <input type="text" id="goodsType" name="goodsType" placeholder="商品类型"
-                                           class="col-xs-10 col-sm-5"/>
+                                    单品 <input type="radio" id="singleProduct" value="0" name="goodsType" checked="checked"/>
+                                    规格 <input type="radio" id="specifications" value="1" name="goodsType"/>
+                                </div>
+
+                                <div class="col-sm-9 tag hidden">
+                                    <input type="text" name="property" id="form-field-tags" placeholder="商品规格" />
                                 </div>
                             </div>
 
@@ -146,15 +153,6 @@
                                         <div class="widget-main">
                                             <input type="file" name="image" id="id-input-file-2" />
                                         </div>
-
-                                  <%--  <div class="ace-file-input">
-                                        <input type="file" name="image" id="id-input-file-2">
-                                        <label class="file-label" data-title="Choose" style="width: 350px;">
-                                            <span class="file-name" data-title="No File ...">
-                                                <i class="icon-upload-alt"></i>
-                                            </span>
-                                        </label>
-                                    </div>--%>
                                 </div>
                             </div>
 
@@ -217,4 +215,22 @@
 <script type="text/javascript" src="${rootURL}resources/js/jquery.inputlimiter.1.3.1.min.js"></script>
 <script type="text/javascript" src="${rootURL}resources/js/jquery.maskedinput.min.js"></script>
 <script type="text/javascript" src="${rootURL}resources/js/bootstrap-tag.min.js"></script>
+<script !src="">
+    var tag_input = $('#form-field-tags');
+    if(! ( /msie\s*(8|7|6)/.test(navigator.userAgent.toLowerCase())) )
+    {
+        tag_input.tag(
+            {
+                placeholder:tag_input.attr('placeholder'),
+                //enable typeahead by specifying the source array
+                source: ace.variable_US_STATES,//defined in ace.js >> ace.enable_search_ahead
+            }
+        );
+    }
+    else {
+        //display a textarea for old IE, because it doesn't support this plugin or another one I tried!
+        tag_input.after('<textarea id="'+tag_input.attr('id')+'" name="'+tag_input.attr('name')+'" rows="3">'+tag_input.val()+'</textarea>').remove();
+        //$('#form-field-tags').autosize({append: "\n"});
+    }
+</script>
 </html>

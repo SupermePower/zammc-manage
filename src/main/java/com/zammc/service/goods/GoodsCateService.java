@@ -5,6 +5,7 @@ import com.zammc.page.PageBean;
 import com.zammc.response.Message;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * @Author : fly
@@ -67,10 +68,19 @@ public interface GoodsCateService {
 
     /**
      * 修改商品分类信息
+     *
      * @param goodsCateEntity
      * @param request
      * @return
      * @throws Exception
      */
     Message editGoodsCate(GoodsCateEntity goodsCateEntity, HttpServletRequest request) throws Exception;
+
+    /**
+     * 获取分类信息
+     *
+     * @return
+     * @throws Exception
+     */
+    List<GoodsCateEntity> queryCateList() throws Exception;
 }

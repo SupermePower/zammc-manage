@@ -2,8 +2,10 @@ package com.zammc.service.goods.impl;
 
 import com.zammc.common.FileUtil;
 import com.zammc.domain.goods.GoodsEntity;
+import com.zammc.domain.goods.GoodsPropertyEntity;
 import com.zammc.idworker.IdWorker;
 import com.zammc.page.PageBean;
+import com.zammc.repository.GoodsPropertyRepository;
 import com.zammc.repository.GoodsRepository;
 import com.zammc.response.Message;
 import com.zammc.response.MessageStatus;
@@ -19,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.transaction.Transactional;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +39,9 @@ public class GoodsServiceImpl implements GoodsService {
 
     @Autowired
     private GoodsRepository goodsRepository;
+
+    @Autowired
+    private GoodsPropertyRepository goodsPropertyRepository;
 
     /**
      * 获取商品分页信息
@@ -109,7 +115,17 @@ public class GoodsServiceImpl implements GoodsService {
      * @return
      * @throws Exception
      */
+    @Transactional
     public Message addGoods(GoodsEntity goodsEntity, HttpServletRequest request) throws Exception {
+        long goodsId = idWorker.nextId();
+        String propertys = request.getParameter("property");
+        if (goodsEntity.getGoodsType().equals("1")) {
+            if (null == propertys || "".equals(propertys)) {
+                return new Message(MessageStatus.FAIL, MessageTitle.失败, "商品规格不能为空");
+            }
+            //增加商品规格信息
+            addGoodsProperty(goodsId, propertys);
+        }
         MultipartHttpServletRequest mreq = (MultipartHttpServletRequest) request;
         MultipartFile image = mreq.getFile("image");
         if (image == null) {
@@ -124,8 +140,28 @@ public class GoodsServiceImpl implements GoodsService {
             goodsEntity.setGoodsImg(img);
         }
 
-        goodsEntity.setGoodsId(idWorker.nextId());
+        goodsEntity.setGoodsId(goodsId);
+        goodsEntity.setDataStatus((byte) 1);
         goodsRepository.saveAndFlush(goodsEntity);
         return new Message(MessageStatus.SUCCESS, MessageTitle.成功, "添加成功");
+    }
+
+    /**
+     * 增加商品规格信息
+     *
+     * @param goodsId
+     * @param propertys
+     */
+    private void addGoodsProperty(long goodsId, String propertys) {
+        String[] split = propertys.split(", ");
+        for (String property : split) {
+            GoodsPropertyEntity goodsPropertyEntity = new GoodsPropertyEntity();
+            goodsPropertyEntity.setId(idWorker.nextId());
+            goodsPropertyEntity.setGoodsId(goodsId);
+            goodsPropertyEntity.setPropertyName(property);
+            goodsPropertyEntity.setPropertyStatus((byte) 0);
+            goodsPropertyEntity.setDataStatus((byte) 1);
+            goodsPropertyRepository.saveAndFlush(goodsPropertyEntity);
+        }
     }
 }

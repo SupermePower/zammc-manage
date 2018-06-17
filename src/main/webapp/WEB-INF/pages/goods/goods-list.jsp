@@ -121,7 +121,13 @@
                                         <td>
                                             <a href="#">${goods.goodsName}</a>
                                         </td>
-                                        <td>${goods.goodsCate}</td>
+                                        <td>
+                                            <c:forEach items="${goodsCates}" var="goodsCate">
+                                                <c:if test="${goodsCate.cateId == goods.goodsCate}">
+                                                    ${goodsCate.cateName}
+                                                </c:if>
+                                            </c:forEach>
+                                        </td>
                                         <td class="hidden-480">${goods.goodsPrice}</td>
                                         <td>${goods.goodsDiscount}</td>
                                         <td class="hidden-480">

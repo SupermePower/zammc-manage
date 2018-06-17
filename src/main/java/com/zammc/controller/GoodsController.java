@@ -1,10 +1,12 @@
 package com.zammc.controller;
 
+import com.zammc.domain.goods.GoodsCateEntity;
 import com.zammc.domain.goods.GoodsEntity;
 import com.zammc.page.PageBean;
 import com.zammc.response.Message;
 import com.zammc.response.MessageStatus;
 import com.zammc.response.MessageTitle;
+import com.zammc.service.goods.GoodsCateService;
 import com.zammc.service.goods.GoodsService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * @Author : fly
@@ -28,6 +31,9 @@ public class GoodsController {
     @Autowired
     private GoodsService goodsService;
 
+    @Autowired
+    private GoodsCateService goodsCateService;
+
     /**
      * 获取商品列表信息
      *
@@ -40,8 +46,10 @@ public class GoodsController {
         ModelAndView modelAndView = new ModelAndView("goods/goods-list");
         try {
             goodsService.queryGoodsPage(goodsEntity, pageBean);
+            List<GoodsCateEntity> goodsCateEntities = goodsCateService.queryCateList();
             modelAndView.addObject("page", pageBean)
-                    .addObject("goods", goodsEntity);
+                    .addObject("goods", goodsEntity)
+                    .addObject("goodsCates", goodsCateEntities);
         } catch (Exception e) {
             log.error("GoodsController queryRechargeOrderPage Exception \n", e);
         }
@@ -55,7 +63,14 @@ public class GoodsController {
      */
     @RequestMapping(value = "/toAdd")
     public ModelAndView toAdd() {
-        return new ModelAndView("goods/goods-add");
+        ModelAndView modelAndView = new ModelAndView("goods/goods-add");
+        try {
+            List<GoodsCateEntity> goodsCateEntities = goodsCateService.queryCateList();
+            modelAndView.addObject("cateList", goodsCateEntities);
+        } catch (Exception e) {
+            log.error("GoodsController toAdd Exception \n", e);
+        }
+        return modelAndView;
     }
 
     /**
