@@ -222,15 +222,12 @@
         tag_input.tag(
             {
                 placeholder:tag_input.attr('placeholder'),
-                //enable typeahead by specifying the source array
-                source: ace.variable_US_STATES,//defined in ace.js >> ace.enable_search_ahead
+                source: ace.variable_US_STATES,
             }
         );
     }
     else {
-        //display a textarea for old IE, because it doesn't support this plugin or another one I tried!
         tag_input.after('<textarea id="'+tag_input.attr('id')+'" name="'+tag_input.attr('name')+'" rows="3">'+tag_input.val()+'</textarea>').remove();
-        //$('#form-field-tags').autosize({append: "\n"});
     }
 </script>
 </html>
