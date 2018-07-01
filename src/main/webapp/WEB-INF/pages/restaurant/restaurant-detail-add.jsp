@@ -4,7 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 5.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
-    <title>banner管理</title>
+    <title>店家详情管理</title>
     <link rel="stylesheet" href="${rootURL}resources/css/bootstrap.min.css"/>
 
 
@@ -79,14 +79,14 @@
             <div class="page-content">
                 <div class="row">
                     <div class="col-xs-12">
-                        <h3 class="header smaller lighter blue">新增banner</h3>
-                        <form class="form-horizontal add-banner-form" action="${ctx}/manage/banner/addBanner" method="post"
+                        <h3 class="header smaller lighter blue">新增店家详情信息</h3>
+                        <form class="form-horizontal add-restaurant-detail-form" action="${ctx}/manage/restaurantDetail/addRestaurantDetail" method="post"
                               enctype="multipart/form-data" role="form">
                             <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> banner名称 </label>
+                                <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 详情标题 </label>
 
                                 <div class="col-sm-9">
-                                    <input type="text" id="form-field-1" name="bannerName" placeholder="banner名称"
+                                    <input type="text" id="form-field-1" name="restaurantProperty" placeholder="详情标题"
                                            class="col-xs-10 col-sm-5"/>
                                 </div>
                             </div>
@@ -94,29 +94,42 @@
                             <div class="space-4"></div>
 
                             <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="form-field-2"> 显示顺序 </label>
-                                <div class="col-sm-9">
-                                    <input type="number" id="form-field-2" name="bannerSort" placeholder="banner显示顺序"
-                                           class="col-xs-10 col-sm-5"/>
-                                </div>
-                            </div>
-
-                            <div class="space-4"></div>
-
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="form-field-2">
-                                    banner图片 </label>
+                                <label class="col-sm-3 control-label no-padding-right">
+                                    详情图片 </label>
                                 <div class="col-sm-9" id="dropzone">
-
-                                        <div class="widget-main">
-                                            <input type="file" name="image" id="id-input-file-2" />
-                                        </div>
+                                    <div class="widget-main">
+                                        <input type="file" name="image" id="id-input-file-2" />
+                                    </div>
                                 </div>
                             </div>
+
+                            <div class="space-4"></div>
+
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right"> 详情排序 </label>
+
+                                <div class="col-sm-9">
+                                    <input type="number" name="sort" placeholder="详情顺序"
+                                           class="col-xs-10 col-sm-5"/>
+                                </div>
+                            </div>
+
+                            <div class="space-4"></div>
+
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right">
+                                    详情内容 </label>
+                                <div class="col-sm-9">
+                                    <textarea class="form-control" name="propertyMsg" style="width: 350px;" id="form-field-8"
+                                              placeholder="详情内容"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="space-4"></div>
 
                             <div class="clearfix form-actions">
                                 <div class="col-md-offset-3 col-md-9">
-                                    <button class="btn btn-info" id="addBanner" type="button">
+                                    <button class="btn btn-info" id="addRestaurantDetail" type="button">
                                         <i class="icon-ok bigger-110"></i>
                                         提交
                                     </button>
@@ -143,7 +156,7 @@
 <script type="text/javascript" src="${rootURL}resources/js/jQuery.min.js"></script>
 <script type="text/javascript" src="${rootURL}resources/js/jQuery.form.js"></script>
 <script type="text/javascript" src="${rootURL}resources/js/common.js"></script>
-<script type="text/javascript" src="${rootURL}resources/js/banner/banner-add.js"></script>
+<script type="text/javascript" src="${rootURL}resources/js/restaurant/restaurant-detail-add.js"></script>
 <script type="text/javascript" src="${rootURL}resources/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="${rootURL}resources/js/typeahead-bs2.min.js"></script>
 <script type="text/javascript" src="${rootURL}resources/js/dropzone.min.js"></script>
