@@ -13,13 +13,13 @@ public class GoodsCateSpecification {
     public static Specification<GoodsCateEntity> where(GoodsCateEntity request) {
         if (null != request.getCateName()) {
             return Specifications.<GoodsCateEntity>and()
-                    .eq("dataStatus", "1")
+                    .eq("dataStatus", "0")
                     .eq("orderId", request.getCateName())
                     .build();
 
         } else if (null == request.getCateName()) {
             return Specifications.<GoodsCateEntity>and()
-                    .eq("dataStatus", "1")
+                    .eq("dataStatus", "0")
                     .build();
         } else {
             return null;

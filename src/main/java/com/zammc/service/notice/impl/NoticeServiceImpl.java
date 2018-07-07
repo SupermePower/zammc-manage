@@ -99,7 +99,7 @@ public class NoticeServiceImpl implements NoticeService {
     @Override
     public void forbiddenNotice(NoticeEntity noticeEntity) throws Exception {
         NoticeEntity one = noticeRepository.findOne(noticeEntity.getNoticeId());
-        if (null != one && one.getDataStatus() == 1 && one.getNoticeStatus() == 1) {
+        if (null != one && one.getDataStatus() == 0 && one.getNoticeStatus() == 1) {
             one.setNoticeStatus((byte) 0);
             noticeRepository.saveAndFlush(one);
         }
@@ -114,7 +114,7 @@ public class NoticeServiceImpl implements NoticeService {
     @Override
     public void startUsingNotice(NoticeEntity noticeEntity) throws Exception {
         NoticeEntity one = noticeRepository.findOne(noticeEntity.getNoticeId());
-        if (null != one && one.getDataStatus() == 1 && one.getNoticeStatus() == 0) {
+        if (null != one && one.getDataStatus() == 0 && one.getNoticeStatus() == 0) {
             one.setNoticeStatus((byte) 1);
             noticeRepository.saveAndFlush(one);
         }
@@ -129,8 +129,8 @@ public class NoticeServiceImpl implements NoticeService {
     @Override
     public void deleteNotice(NoticeEntity noticeEntity) throws Exception {
         NoticeEntity one = noticeRepository.findOne(noticeEntity.getNoticeId());
-        if (null != one && one.getDataStatus() == 1) {
-            one.setDataStatus((byte) 0);
+        if (null != one && one.getDataStatus() == 0) {
+            one.setDataStatus((byte) 1);
             noticeRepository.saveAndFlush(one);
         }
     }

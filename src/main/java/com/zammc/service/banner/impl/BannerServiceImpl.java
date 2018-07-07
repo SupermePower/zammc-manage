@@ -70,8 +70,8 @@ public class BannerServiceImpl implements BannerService {
      */
     public void deleteBanner(BannerEntity bannerEntity) throws Exception {
         BannerEntity one = bannerRepository.findOne(bannerEntity.getBannerId());
-        if (null != one && one.getDataStatus() == 1) {
-            one.setDataStatus((byte) 0);
+        if (null != one && one.getDataStatus() == 0) {
+            one.setDataStatus((byte) 1);
             bannerRepository.saveAndFlush(one);
         }
     }
@@ -84,7 +84,7 @@ public class BannerServiceImpl implements BannerService {
      */
     public void forbiddenBanner(BannerEntity bannerEntity) throws Exception {
         BannerEntity one = bannerRepository.findOne(bannerEntity.getBannerId());
-        if (null != one && one.getDataStatus() == 1 && one.getBannerStatus() == 1) {
+        if (null != one && one.getDataStatus() == 0 && one.getBannerStatus() == 1) {
             one.setBannerStatus((byte) 0);
             bannerRepository.saveAndFlush(one);
         }
@@ -98,7 +98,7 @@ public class BannerServiceImpl implements BannerService {
      */
     public void startUsingBanner(BannerEntity bannerEntity) throws Exception {
         BannerEntity one = bannerRepository.findOne(bannerEntity.getBannerId());
-        if (null != one && one.getDataStatus() == 1 && one.getBannerStatus() == 0) {
+        if (null != one && one.getDataStatus() == 0 && one.getBannerStatus() == 0) {
             one.setBannerStatus((byte) 1);
             bannerRepository.saveAndFlush(one);
         }

@@ -14,13 +14,13 @@ public class BannerSpecification {
     public static Specification<BannerEntity> where(BannerEntity request) {
         if(null != request.getBannerName()) { //全部
             return Specifications.<BannerEntity>and()
-                    .eq("dataStatus", "1")
+                    .eq("dataStatus", "0")
                     .eq("bannerName", request.getBannerName())
                     .build();
 
         } else if (null == request.getBannerName()) {
             return Specifications.<BannerEntity>and()
-                    .eq("dataStatus", "1")
+                    .eq("dataStatus", "0")
                     .build();
         } else {
             return null;

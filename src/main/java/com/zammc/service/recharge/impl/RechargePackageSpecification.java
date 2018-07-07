@@ -7,7 +7,7 @@ import org.springframework.data.jpa.domain.Specification;
 public class RechargePackageSpecification {
     public static Specification<RechargePackageEntity> where(RechargePackageEntity request) {
             return Specifications.<RechargePackageEntity>and()
-                    .eq("dataStatus", "1")
+                    .eq("dataStatus", "0")
                     .build();
     }
 }

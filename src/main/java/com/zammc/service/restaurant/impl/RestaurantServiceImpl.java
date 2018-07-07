@@ -111,7 +111,7 @@ public class RestaurantServiceImpl implements RestaurantService {
      */
     public void editRestaurantBusiness(RestaurantEntity restaurantEntity) throws Exception {
         RestaurantEntity one = restaurantRepository.findOne(restaurantEntity.getRestaurantId());
-        if (one.getDataStatus() != 0 && one.getStatus() == 0) {
+        if (one.getDataStatus() != 1 && one.getStatus() == 0) {
             one.setStatus((byte) 1);
             restaurantRepository.saveAndFlush(one);
         }
@@ -125,7 +125,7 @@ public class RestaurantServiceImpl implements RestaurantService {
      */
     public void editRestaurantRest(RestaurantEntity restaurantEntity) throws Exception {
         RestaurantEntity one = restaurantRepository.findOne(restaurantEntity.getRestaurantId());
-        if (one.getDataStatus() != 0 && one.getStatus() == 1) {
+        if (one.getDataStatus() != 1 && one.getStatus() == 1) {
             one.setStatus((byte) 0);
             restaurantRepository.saveAndFlush(one);
         }

@@ -65,8 +65,8 @@ public class RechargePackageServiceImpl implements RechargePackageService {
      */
     public void deletePackage(RechargePackageEntity rechargePackageEntity) throws Exception {
         RechargePackageEntity one = rechargePackageRepository.findOne(rechargePackageEntity.getPackageId());
-        if (null != one && one.getDataStatus() == 1) {
-            one.setDataStatus((byte) 0);
+        if (null != one && one.getDataStatus() == 0) {
+            one.setDataStatus((byte) 1);
             rechargePackageRepository.saveAndFlush(one);
         }
     }

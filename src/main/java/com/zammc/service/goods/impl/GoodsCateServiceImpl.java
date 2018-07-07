@@ -69,7 +69,7 @@ public class GoodsCateServiceImpl implements GoodsCateService {
     @Override
     public void startUsingCate(GoodsCateEntity goodsCateEntity) throws Exception {
         GoodsCateEntity one = goodsCateRepository.findOne(goodsCateEntity.getCateId());
-        if (null != one && one.getDataStatus() == 1 && one.getStatus() == 0) {
+        if (null != one && one.getDataStatus() == 0 && one.getStatus() == 0) {
             one.setStatus((byte) 1);
             goodsCateRepository.saveAndFlush(one);
         }
@@ -84,7 +84,7 @@ public class GoodsCateServiceImpl implements GoodsCateService {
     @Override
     public void forbiddenCate(GoodsCateEntity goodsCateEntity) throws Exception {
         GoodsCateEntity one = goodsCateRepository.findOne(goodsCateEntity.getCateId());
-        if (null != one && one.getDataStatus() == 1 && one.getStatus() == 1) {
+        if (null != one && one.getDataStatus() == 0 && one.getStatus() == 1) {
             one.setStatus((byte) 0);
             goodsCateRepository.saveAndFlush(one);
         }
@@ -99,8 +99,8 @@ public class GoodsCateServiceImpl implements GoodsCateService {
     @Override
     public void deleteGoodsCate(GoodsCateEntity goodsCateEntity) throws Exception {
         GoodsCateEntity one = goodsCateRepository.findOne(goodsCateEntity.getCateId());
-        if (null != one && one.getDataStatus() == 1) {
-            one.setDataStatus((byte) 0);
+        if (null != one && one.getDataStatus() == 0) {
+            one.setDataStatus((byte) 1);
             goodsCateRepository.saveAndFlush(one);
         }
     }

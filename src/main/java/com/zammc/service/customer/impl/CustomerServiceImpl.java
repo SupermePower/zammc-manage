@@ -51,8 +51,8 @@ public class CustomerServiceImpl implements CustomerService {
      */
     public void deleteCustomer(UserInfoEntity userInfo) throws Exception {
         UserInfoEntity one = customerRepository.findOne(userInfo.getUserId());
-        if (null != one && one.getDataStatus() == 1) {
-            one.setDataStatus((byte) 0);
+        if (null != one && one.getDataStatus() == 0) {
+            one.setDataStatus((byte) 1);
             customerRepository.saveAndFlush(one);
         }
     }

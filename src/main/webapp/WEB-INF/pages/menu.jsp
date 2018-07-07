@@ -124,7 +124,7 @@
     </li>
 
     <li>
-        <a href="http://localhost:7500/manage/restaurantDetail/queryRestaurantDetailPage" class="dropdown-toggle">
+        <a href="https://www.sxmbyd.com/manage/restaurantDetail/queryRestaurantDetailPage" class="dropdown-toggle">
             <i class="icon-edit"></i>
             <span class="menu-text"> 店家详情 </span>
 

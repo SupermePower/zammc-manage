@@ -22,6 +22,6 @@ public interface GoodsCateRepository extends JpaRepository<GoodsCateEntity, Long
      * @return
      * @throws Exception
      */
-    @Query(value = "select cate from GoodsCateEntity cate where cate.dataStatus = '1' and cate.status = '1'")
+    @Query(value = "select cate from GoodsCateEntity cate where cate.dataStatus = '0' and cate.status = '1'")
     List<GoodsCateEntity> queryCateList() throws Exception;
 }

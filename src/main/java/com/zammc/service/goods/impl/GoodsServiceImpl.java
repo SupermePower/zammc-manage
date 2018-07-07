@@ -73,8 +73,8 @@ public class GoodsServiceImpl implements GoodsService {
      */
     public void deleteGoods(GoodsEntity goodsEntity) throws Exception {
         GoodsEntity one = goodsRepository.findOne(goodsEntity.getGoodsId());
-        if (one != null && one.getDataStatus() == 1) {
-            one.setDataStatus((byte) 0);
+        if (one != null && one.getDataStatus() == 0) {
+            one.setDataStatus((byte) 1);
             goodsRepository.saveAndFlush(one);
         }
     }
@@ -141,7 +141,6 @@ public class GoodsServiceImpl implements GoodsService {
         }
 
         goodsEntity.setGoodsId(goodsId);
-        goodsEntity.setDataStatus((byte) 1);
         goodsRepository.saveAndFlush(goodsEntity);
         return new Message(MessageStatus.SUCCESS, MessageTitle.成功, "添加成功");
     }
@@ -160,7 +159,6 @@ public class GoodsServiceImpl implements GoodsService {
             goodsPropertyEntity.setGoodsId(goodsId);
             goodsPropertyEntity.setPropertyName(property);
             goodsPropertyEntity.setPropertyStatus((byte) 0);
-            goodsPropertyEntity.setDataStatus((byte) 1);
             goodsPropertyRepository.saveAndFlush(goodsPropertyEntity);
         }
     }

@@ -25,7 +25,7 @@ public interface OrderItemRepository extends JpaRepository<OrderItemEntity, Long
      * @return
      * @throws Exception
      */
-    @Query(value = "select orderItem from OrderItemEntity orderItem where orderItem.orderId = :orderId and orderItem.dataStatus = '1'")
+    @Query(value = "select orderItem from OrderItemEntity orderItem where orderItem.orderId = :orderId and orderItem.dataStatus = '0'")
     List<OrderItemEntity> queryOrderItem(@Param("orderId") Long orderId) throws Exception;
 
     /**

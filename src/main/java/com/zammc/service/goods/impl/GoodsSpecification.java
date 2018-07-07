@@ -13,13 +13,13 @@ public class GoodsSpecification {
     public static Specification<GoodsEntity> where(GoodsEntity request) {
         if (null != request.getGoodsName()) {
             return Specifications.<GoodsEntity>and()
-                    .eq("dataStatus", "1")
+                    .eq("dataStatus", "0")
                     .eq("orderId", request.getGoodsName())
                     .build();
 
         } else if (null == request.getGoodsName()) {
             return Specifications.<GoodsEntity>and()
-                    .eq("dataStatus", "1")
+                    .eq("dataStatus", "0")
                     .build();
         } else {
             return null;

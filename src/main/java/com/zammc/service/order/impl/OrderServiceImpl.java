@@ -61,8 +61,8 @@ public class OrderServiceImpl implements OrderService {
      */
     public void deleteOrder(OrderInfoEntity orderInfo) throws Exception {
         OrderInfoEntity one = orderRepository.findOne(orderInfo.getOrderId());
-        if (one != null && one.getDataStatus() == 1) {
-            one.setDataStatus((byte) 0);
+        if (one != null && one.getDataStatus() == 0) {
+            one.setDataStatus((byte) 1);
             orderRepository.saveAndFlush(one);
         }
     }
@@ -75,7 +75,7 @@ public class OrderServiceImpl implements OrderService {
      */
     public void finishOrder(OrderInfoEntity orderInfo) throws Exception {
         OrderInfoEntity one = orderRepository.findOne(orderInfo.getOrderId());
-        if (one != null && one.getDataStatus() == 1) {
+        if (one != null && one.getDataStatus() == 0) {
             one.setPayStatus((byte) 1);
             orderRepository.saveAndFlush(one);
         }

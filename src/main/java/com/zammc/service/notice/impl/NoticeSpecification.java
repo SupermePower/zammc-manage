@@ -14,13 +14,13 @@ public class NoticeSpecification {
     public static Specification<NoticeEntity> where(NoticeEntity request) {
         if(null != request.getNoticeName()) { //全部
             return Specifications.<NoticeEntity>and()
-                    .eq("dataStatus", "1")
+                    .eq("dataStatus", "0")
                     .eq("noticeName", request.getNoticeName())
                     .build();
 
         } else if (null == request.getNoticeName()) {
             return Specifications.<NoticeEntity>and()
-                    .eq("dataStatus", "1")
+                    .eq("dataStatus", "0")
                     .build();
         } else {
             return null;

@@ -68,7 +68,6 @@ public class DiningTableServiceImpl implements DiningTableService {
         }
         diningTableEntity.setTableId(idWorker.nextId());
         diningTableEntity.setTableStatus((byte) 1);
-        diningTableEntity.setDataStatus((byte) 1);
         diningTableRepository.saveAndFlush(diningTableEntity);
         return new Message(MessageStatus.SUCCESS, MessageTitle.成功, "新增成功");
     }
@@ -107,8 +106,8 @@ public class DiningTableServiceImpl implements DiningTableService {
      */
     public void deleteDiningTable(DiningTableEntity diningTableEntity) throws Exception {
         DiningTableEntity one = diningTableRepository.findOne(diningTableEntity.getTableId());
-        if (null != one && one.getDataStatus() == 1) {
-            one.setDataStatus((byte) 0);
+        if (null != one && one.getDataStatus() == 0) {
+            one.setDataStatus((byte) 1);
             diningTableRepository.saveAndFlush(one);
         }
     }

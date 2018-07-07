@@ -1,7 +1,6 @@
 package com.zammc.service.restaurant.impl;
 
 import com.zammc.common.FileUtil;
-import com.zammc.domain.banner.BannerEntity;
 import com.zammc.domain.restaurant.RestaurantEntity;
 import com.zammc.domain.restaurant.RestaurantPropertyEntity;
 import com.zammc.idworker.IdWorker;
@@ -112,8 +111,8 @@ public class RestaurantDetailServiceImpl implements RestaurantDetailService {
      */
     public void deleteRestaurantDetail(RestaurantPropertyEntity restaurantPropertyEntity) throws Exception {
         RestaurantPropertyEntity one = restaurantDetailRepository.findOne(restaurantPropertyEntity.getId());
-        if (null != one && one.getDataStatus() == 1) {
-            one.setDataStatus((byte) 0);
+        if (null != one && one.getDataStatus() == 0) {
+            one.setDataStatus((byte) 1);
             restaurantDetailRepository.saveAndFlush(one);
         }
     }

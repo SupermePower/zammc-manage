@@ -1,11 +1,9 @@
 package com.zammc.service.reserve.impl;
 
 
-import com.zammc.domain.goods.GoodsCateEntity;
 import com.zammc.domain.reserve.ReserveEntity;
 import com.zammc.page.PageBean;
 import com.zammc.repository.ReserveRepository;
-import com.zammc.service.goods.impl.GoodsCateSpecification;
 import com.zammc.service.reserve.ReserveService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -59,8 +57,8 @@ public class ReserveServiceImpl implements ReserveService {
      */
     public void deleteReserve(ReserveEntity reserveEntity) throws Exception {
         ReserveEntity one = reserveRepository.findOne(reserveEntity.getReserveId());
-        if (null != one && one.getDataStatus() == 1) {
-            one.setDataStatus((byte) 0);
+        if (null != one && one.getDataStatus() == 0) {
+            one.setDataStatus((byte) 1);
             reserveRepository.saveAndFlush(one);
         }
     }
