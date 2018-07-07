@@ -25,7 +25,7 @@ public class RestaurantPropertyEntity {
     private Timestamp createTime;
     private Timestamp updateTime;
     private byte version;
-    private byte dataStatus;
+    private Byte dataStatus;
 
     @Id
     @Column(name = "id")

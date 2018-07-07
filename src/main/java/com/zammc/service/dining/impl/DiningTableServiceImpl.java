@@ -112,4 +112,14 @@ public class DiningTableServiceImpl implements DiningTableService {
             diningTableRepository.saveAndFlush(one);
         }
     }
+
+    /**
+     * 首页餐位信息
+     *
+     * @return
+     * @throws Exception
+     */
+    public List<DiningTableEntity> indexDiningTableData() throws Exception {
+        return diningTableRepository.indexDiningTableData();
+    }
 }

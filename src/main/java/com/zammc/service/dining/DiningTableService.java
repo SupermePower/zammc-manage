@@ -4,6 +4,8 @@ import com.zammc.domain.table.DiningTableEntity;
 import com.zammc.page.PageBean;
 import com.zammc.response.Message;
 
+import java.util.List;
+
 /**
  * @Author : fly
  * @Description :
@@ -54,4 +56,12 @@ public interface DiningTableService {
      * @throws Exception
      */
     void deleteDiningTable(DiningTableEntity diningTableEntity) throws Exception;
+
+    /**
+     * 首页餐位信息
+     *
+     * @return
+     * @throws Exception
+     */
+    List<DiningTableEntity> indexDiningTableData() throws Exception;
 }
