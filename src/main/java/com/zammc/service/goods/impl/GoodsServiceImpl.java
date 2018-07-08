@@ -118,14 +118,14 @@ public class GoodsServiceImpl implements GoodsService {
     @Transactional
     public Message addGoods(GoodsEntity goodsEntity, HttpServletRequest request) throws Exception {
         long goodsId = idWorker.nextId();
-        String propertys = request.getParameter("property");
-        if (goodsEntity.getGoodsType().equals("1")) {
-            if (null == propertys || "".equals(propertys)) {
-                return new Message(MessageStatus.FAIL, MessageTitle.失败, "商品规格不能为空");
-            }
-            //增加商品规格信息
-            addGoodsProperty(goodsId, propertys);
-        }
+//        String propertys = request.getParameter("property");
+//        if (goodsEntity.getGoodsType().equals("1")) {
+//            if (null == propertys || "".equals(propertys)) {
+//                return new Message(MessageStatus.FAIL, MessageTitle.失败, "商品规格不能为空");
+//            }
+//            //增加商品规格信息
+//            addGoodsProperty(goodsId, propertys);
+//        }
         MultipartHttpServletRequest mreq = (MultipartHttpServletRequest) request;
         MultipartFile image = mreq.getFile("image");
         if (image == null) {
@@ -161,5 +161,15 @@ public class GoodsServiceImpl implements GoodsService {
             goodsPropertyEntity.setPropertyStatus((byte) 0);
             goodsPropertyRepository.saveAndFlush(goodsPropertyEntity);
         }
+    }
+
+    /**
+     * 取货所有不是单品商品
+     *
+     * @return
+     * @throws Exception
+     */
+    public List<GoodsEntity> queryAllNotSingleGoods() throws Exception {
+        return goodsRepository.queryAllNotSingleGoods();
     }
 }

@@ -52,6 +52,15 @@
     </li>
 
     <li>
+        <a href="https://www.sxmbyd.com/manage/goodsProperty/queryGoodsPropertyPage" class="dropdown-toggle">
+            <i class="icon-edit"></i>
+            <span class="menu-text"> 商品规格管理 </span>
+
+            <b class="arrow icon-angle-down"></b>
+        </a>
+    </li>
+
+    <li>
         <a href="https://www.sxmbyd.com/manage/goodsCate/queryGoodsCatePage" class="dropdown-toggle">
             <i class="icon-edit"></i>
             <span class="menu-text"> 商品分类 </span>

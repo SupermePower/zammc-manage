@@ -5,6 +5,7 @@ import com.zammc.page.PageBean;
 import com.zammc.response.Message;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * @Author : fly
@@ -55,4 +56,12 @@ public interface GoodsService {
      * @throws Exception
      */
     Message addGoods(GoodsEntity goodsEntity, HttpServletRequest request) throws Exception;
+
+    /**
+     * 取货所有不是单品商品
+     *
+     * @return
+     * @throws Exception
+     */
+    List<GoodsEntity> queryAllNotSingleGoods() throws Exception;
 }

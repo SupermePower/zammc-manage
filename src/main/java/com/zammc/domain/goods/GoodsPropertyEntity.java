@@ -122,4 +122,19 @@ public class GoodsPropertyEntity {
         this.dataStatus = dataStatus;
     }
 
+    @Override
+    public String toString() {
+        return "GoodsPropertyEntity{" +
+                "id=" + id +
+                ", goodsId=" + goodsId +
+                ", propertyName='" + propertyName + '\'' +
+                ", propertyMsg='" + propertyMsg + '\'' +
+                ", propertyStatus=" + propertyStatus +
+                ", propertyImg='" + propertyImg + '\'' +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                ", version=" + version +
+                ", dataStatus=" + dataStatus +
+                '}';
+    }
 }

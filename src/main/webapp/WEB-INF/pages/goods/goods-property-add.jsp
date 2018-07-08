@@ -4,7 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 5.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
-    <title>商品管理</title>
+    <title>商品规格管理</title>
     <link rel="stylesheet" href="${rootURL}resources/css/bootstrap.min.css"/>
 
 
@@ -79,27 +79,16 @@
             <div class="page-content">
                 <div class="row">
                     <div class="col-xs-12">
-                        <h3 class="header smaller lighter blue">新增商品</h3>
-                        <form class="form-horizontal add-goods-form" action="${ctx}/manage/goods/addGoods" method="post"
+                        <h3 class="header smaller lighter blue">新增商品规格</h3>
+                        <form class="form-horizontal add-goods-property-form" action="${ctx}/manage/goodsProperty/addGoodsProperty" method="post"
                               enctype="multipart/form-data" role="form">
                             <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 商品名称 </label>
+                                <label class="col-sm-3 control-label no-padding-right" > 商品名称 </label>
 
                                 <div class="col-sm-9">
-                                    <input type="text" id="form-field-1" name="goodsName" placeholder="商品名称"
-                                           class="col-xs-10 col-sm-5"/>
-                                </div>
-                            </div>
-
-                            <div class="space-4"></div>
-
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="form-field-2"> 商品分类 </label>
-
-                                <div class="col-sm-9">
-                                    <select name="goodsCate" id="form-field-2">
-                                        <c:forEach items="${cateList}" var="cate">
-                                            <option value="${cate.cateId}">${cate.cateName}</option>
+                                    <select name="goodsId">
+                                        <c:forEach items="${goodsList}" var="goods">
+                                            <option value="${goods.goodsId}">${goods.goodsName}</option>
                                         </c:forEach>
                                     </select>
                                 </div>
@@ -108,25 +97,10 @@
                             <div class="space-4"></div>
 
                             <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="form-field-2"> 商品类型 </label>
+                                <label class="col-sm-3 control-label no-padding-right"> 商品规格名称 </label>
 
                                 <div class="col-sm-9">
-                                    单品 <input type="radio" id="singleProduct" value="0" name="goodsType" checked="checked"/>
-                                    规格 <input type="radio" id="specifications" value="1" name="goodsType"/>
-                                </div>
-
-                                <%--<div class="col-sm-9 tag hidden">--%>
-                                    <%--<input type="text" name="property" id="form-field-tags" placeholder="商品规格" />--%>
-                                <%--</div>--%>
-                            </div>
-
-                            <div class="space-4"></div>
-
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="form-field-2"> 商品价格 </label>
-
-                                <div class="col-sm-9">
-                                    <input type="number" id="goodsPrice" name="goodsPrice" placeholder="商品价格"
+                                    <input type="text" id="goodsDiscount" name="propertyName" placeholder="商品规格名称"
                                            class="col-xs-10 col-sm-5"/>
                                 </div>
                             </div>
@@ -134,40 +108,18 @@
                             <div class="space-4"></div>
 
                             <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="form-field-2">
-                                    商品优惠价 </label>
+                                <label class="col-sm-3 control-label no-padding-right" > 规格参数 </label>
 
-                                <div class="col-sm-9">
-                                    <input type="number" id="goodsDiscount" name="goodsDiscount" placeholder="商品优惠价"
-                                           class="col-xs-10 col-sm-5"/>
+                                <div class="col-sm-9 tag">
+                                    <input type="text" name="propertyMsgs" id="form-field-tags" placeholder="规格参数" />
                                 </div>
                             </div>
 
                             <div class="space-4"></div>
-
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="form-field-2">
-                                    商品图片 </label>
-                                <div class="col-sm-9" id="dropzone">
-
-                                        <div class="widget-main">
-                                            <input type="file" name="image" id="id-input-file-2" />
-                                        </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="form-field-2">
-                                    商品描述 </label>
-                                <div class="col-sm-9">
-                                    <textarea class="form-control" style="width: 350px;" id="form-field-8"
-                                              placeholder="商品描述"></textarea>
-                                </div>
-                            </div>
 
                             <div class="clearfix form-actions">
                                 <div class="col-md-offset-3 col-md-9">
-                                    <button class="btn btn-info" id="addGoods" type="button">
+                                    <button class="btn btn-info" id="addGoodsProperty" type="button">
                                         <i class="icon-ok bigger-110"></i>
                                         提交
                                     </button>
@@ -194,7 +146,7 @@
 <script type="text/javascript" src="${rootURL}resources/js/jQuery.min.js"></script>
 <script type="text/javascript" src="${rootURL}resources/js/jQuery.form.js"></script>
 <script type="text/javascript" src="${rootURL}resources/js/common.js"></script>
-<script type="text/javascript" src="${rootURL}resources/js/goods/goods-add.js"></script>
+<script type="text/javascript" src="${rootURL}resources/js/goods/goods-property-add.js"></script>
 <script type="text/javascript" src="${rootURL}resources/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="${rootURL}resources/js/typeahead-bs2.min.js"></script>
 <script type="text/javascript" src="${rootURL}resources/js/dropzone.min.js"></script>

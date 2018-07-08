@@ -6,11 +6,11 @@ $('#addGoods').click(function (e) {
     property = tags;
     $(".add-goods-form").ajaxSubmit(common.options);
 });
-
-$('#singleProduct').click(function () {
-    $('.tag').addClass("hidden");
-});
-
-$('#specifications').click(function () {
-    $('.tag').removeClass("hidden");
-});
+//
+// $('#singleProduct').click(function () {
+//     $('.tag').addClass("hidden");
+// });
+//
+// $('#specifications').click(function () {
+//     $('.tag').removeClass("hidden");
+// });
