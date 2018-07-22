@@ -159,6 +159,15 @@
         </a>
     </li>
 
+    <li>
+        <a href="https://www.sxmbyd.com/manage/activity/queryActivityPage" class="dropdown-toggle">
+            <i class="icon-edit"></i>
+            <span class="menu-text"> 活动管理 </span>
+
+            <b class="arrow icon-angle-down"></b>
+        </a>
+    </li>
+
 </ul><!-- /.nav-list -->
 
 <div class="sidebar-collapse" id="sidebar-collapse">

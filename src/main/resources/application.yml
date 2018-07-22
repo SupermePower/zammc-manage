@@ -43,3 +43,4 @@ logging:
   file: logs/zammc-manage/zammc-manage.log
   level:
     ROOT: INFO
+
