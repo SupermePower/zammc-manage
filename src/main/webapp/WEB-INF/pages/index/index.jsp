@@ -1109,7 +1109,7 @@
 
 <!--[if !IE]> -->
 
-<script src="${rootURL}resources/js/jquery.min.js"></script>
+<script src="${rootURL}resources/js/jQuery.min.js"></script>
 
 <!-- <![endif]-->
 

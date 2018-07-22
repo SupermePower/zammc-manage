@@ -165,7 +165,7 @@
 
 <script type="text/javascript" src="${rootURL}resources/js/jquery-ui-1.10.3.custom.min.js"></script>
 <script type="text/javascript" src="${rootURL}resources/js/jquery.ui.touch-punch.min.js"></script>
-<script type="text/javascript" src="${rootURL}resources/js/chosen.jquery.min.js"></script>
+<script type="text/javascript" src="${rootURL}resources/js/chosen.jQuery.min.js"></script>
 <script type="text/javascript" src="${rootURL}resources/js/fuelux/fuelux.spinner.min.js"></script>
 <script type="text/javascript" src="${rootURL}resources/js/date-time/bootstrap-datepicker.min.js"></script>
 <script type="text/javascript" src="${rootURL}resources/js/date-time/bootstrap-timepicker.min.js"></script>
