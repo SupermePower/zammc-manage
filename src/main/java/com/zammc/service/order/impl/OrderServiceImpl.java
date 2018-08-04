@@ -1,5 +1,6 @@
 package com.zammc.service.order.impl;
 
+import com.zammc.common.DateUtil;
 import com.zammc.domain.order.OrderInfoEntity;
 import com.zammc.domain.order.OrderItemEntity;
 import com.zammc.page.PageBean;
@@ -14,6 +15,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,6 +39,7 @@ public class OrderServiceImpl implements OrderService {
      * @param orderInfo
      * @param pageBean
      */
+    @Override
     public void queryOrderPage(OrderInfoEntity orderInfo, PageBean pageBean) throws Exception {
         int page = pageBean.getPageNum() - 1;
         int size = pageBean.getPageSize();
@@ -59,6 +62,7 @@ public class OrderServiceImpl implements OrderService {
      * @param orderInfo
      * @throws Exception
      */
+    @Override
     public void deleteOrder(OrderInfoEntity orderInfo) throws Exception {
         OrderInfoEntity one = orderRepository.findOne(orderInfo.getOrderId());
         if (one != null && one.getDataStatus() == 0) {
@@ -73,6 +77,7 @@ public class OrderServiceImpl implements OrderService {
      * @param orderInfo
      * @throws Exception
      */
+    @Override
     public void finishOrder(OrderInfoEntity orderInfo) throws Exception {
         OrderInfoEntity one = orderRepository.findOne(orderInfo.getOrderId());
         if (one != null && one.getDataStatus() == 0) {
@@ -87,6 +92,7 @@ public class OrderServiceImpl implements OrderService {
      * @param orderInfo
      * @throws Exception
      */
+    @Override
     public void cancelOrder(OrderInfoEntity orderInfo) throws Exception {
         OrderInfoEntity one = orderRepository.findOne(orderInfo.getOrderId());
         one.setPayStatus((byte) 2);
@@ -100,6 +106,7 @@ public class OrderServiceImpl implements OrderService {
      * @return
      * @throws Exception
      */
+    @Override
     public List<OrderItemEntity> queryOrderDetail(OrderInfoEntity orderInfo) throws Exception {
         return orderItemRepository.queryOrderItem(orderInfo.getOrderId());
     }
@@ -111,7 +118,30 @@ public class OrderServiceImpl implements OrderService {
      * @return
      * @throws Exception
      */
+    @Override
     public BigDecimal queryGoodsItemPriceSum(OrderInfoEntity orderInfo) throws Exception {
         return orderItemRepository.queryGoodsItemPriceSum(orderInfo.getOrderId());
+    }
+
+    /**
+     * 获取当日订单总量
+     *
+     * @return
+     * @throws Exception
+     */
+    @Override
+    public Long queryOrderCount() throws Exception {
+        return orderRepository.queryOrderCount(DateUtil.getCurrentTime(new Timestamp(System.currentTimeMillis())));
+    }
+
+    /**
+     * 获取当日营业额信息
+     *
+     * @return
+     * @throws Exception
+     */
+    @Override
+    public Double queryTotalPrice() throws Exception {
+        return orderRepository.queryTotalPrice(DateUtil.getCurrentTime(new Timestamp(System.currentTimeMillis())));
     }
 }

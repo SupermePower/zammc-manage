@@ -24,4 +24,13 @@ public interface DiningTableRepository extends JpaRepository<DiningTableEntity, 
      */
     @Query(value = "select * from dining_table where data_status = '0' limit 8", nativeQuery = true)
     List<DiningTableEntity> indexDiningTableData() throws Exception;
+
+    /**
+     * 获取空闲餐位数
+     *
+     * @return
+     * @throws Exception
+     */
+    @Query(value = "select count(tables) from DiningTableEntity tables where tables.tableStatus = '1' and tables.dataStatus = '0'")
+    Long queryFreeTableCount() throws Exception;
 }

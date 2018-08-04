@@ -1,14 +1,12 @@
 package com.zammc.controller;
 
-import com.zammc.domain.table.DiningTableEntity;
 import com.zammc.service.dining.DiningTableService;
+import com.zammc.service.order.OrderService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-
-import java.util.List;
 
 @Controller
 @RequestMapping("/")
@@ -18,6 +16,9 @@ public class IndexController {
     @Autowired
     private DiningTableService diningTableService;
 
+    @Autowired
+    private OrderService orderService;
+
     /**
      * 获取首页信息
      *
@@ -25,15 +26,14 @@ public class IndexController {
      */
     @RequestMapping(value = "/")
     public ModelAndView index() {
-        ModelAndView modelAndView = new ModelAndView("index/index");
+        ModelAndView modelAndView = new ModelAndView("index/home-page");
         try {
-            //TODO 订单信息
-            // 桌号信息
-            List<DiningTableEntity> diningTableEntities = diningTableService.indexDiningTableData();
-            modelAndView.addObject("diningTables", diningTableEntities);
-            //TODO 热门商品
-            //TODO 优惠菜
-            //TODO 是否有新订单
+            Long orderCount = orderService.queryOrderCount();
+            Double totalPrice = orderService.queryTotalPrice();
+            Long freeTableCount = diningTableService.queryFreeTableCount();
+            modelAndView.addObject("orderCount", orderCount)
+                    .addObject("totalPrice", totalPrice)
+                    .addObject("freeTableCount", freeTableCount);
         } catch (Exception e) {
             log.error("IndexController index Exception\n", e);
         }

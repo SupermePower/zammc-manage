@@ -64,4 +64,12 @@ public interface DiningTableService {
      * @throws Exception
      */
     List<DiningTableEntity> indexDiningTableData() throws Exception;
+
+    /**
+     * 获取空闲餐位数
+     *
+     * @return
+     * @throws Exception
+     */
+    Long queryFreeTableCount() throws Exception;
 }

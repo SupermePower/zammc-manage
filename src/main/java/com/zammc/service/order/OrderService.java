@@ -63,4 +63,20 @@ public interface OrderService {
      * @throws Exception
      */
     BigDecimal queryGoodsItemPriceSum(OrderInfoEntity orderInfo) throws Exception;
+
+    /**
+     * 获取当日订单总量
+     *
+     * @return
+     * @throws Exception
+     */
+    Long queryOrderCount() throws Exception;
+
+    /**
+     * 获取当日营业额信息
+     *
+     * @return
+     * @throws Exception
+     */
+    Double queryTotalPrice() throws Exception;
 }

@@ -39,6 +39,7 @@ public class DiningTableServiceImpl implements DiningTableService {
      * @param pageBean
      * @throws Exception
      */
+    @Override
     public void queryDiningTablePage(DiningTableEntity diningTableEntity, PageBean pageBean) throws Exception {
         int page = pageBean.getPageNum() - 1;
         int size = pageBean.getPageSize();
@@ -62,6 +63,7 @@ public class DiningTableServiceImpl implements DiningTableService {
      * @return
      * @throws Exception
      */
+    @Override
     public Message addDiningTable(DiningTableEntity diningTableEntity) throws Exception {
         if (null == diningTableEntity.getTableCode() || "".equals(diningTableEntity.getTableCode())) {
             return new Message(MessageStatus.FAIL, MessageTitle.失败, "餐位编码不能为空");
@@ -79,6 +81,7 @@ public class DiningTableServiceImpl implements DiningTableService {
      * @return
      * @throws Exception
      */
+    @Override
     public DiningTableEntity queryDiningTableById(DiningTableEntity diningTableEntity) throws Exception {
         return diningTableRepository.findOne(diningTableEntity.getTableId());
     }
@@ -90,6 +93,7 @@ public class DiningTableServiceImpl implements DiningTableService {
      * @return
      * @throws Exception
      */
+    @Override
     public Message editDiningTable(DiningTableEntity diningTableEntity) throws Exception {
         if (null == diningTableEntity.getTableCode() || "".equals(diningTableEntity.getTableCode())) {
             return new Message(MessageStatus.FAIL, MessageTitle.失败, "餐位编码不能为空");
@@ -104,6 +108,7 @@ public class DiningTableServiceImpl implements DiningTableService {
      * @param diningTableEntity
      * @throws Exception
      */
+    @Override
     public void deleteDiningTable(DiningTableEntity diningTableEntity) throws Exception {
         DiningTableEntity one = diningTableRepository.findOne(diningTableEntity.getTableId());
         if (null != one && one.getDataStatus() == 0) {
@@ -118,7 +123,19 @@ public class DiningTableServiceImpl implements DiningTableService {
      * @return
      * @throws Exception
      */
+    @Override
     public List<DiningTableEntity> indexDiningTableData() throws Exception {
         return diningTableRepository.indexDiningTableData();
+    }
+
+    /**
+     * 获取空闲餐位数
+     *
+     * @return
+     * @throws Exception
+     */
+    @Override
+    public Long queryFreeTableCount() throws Exception {
+        return diningTableRepository.queryFreeTableCount();
     }
 }
