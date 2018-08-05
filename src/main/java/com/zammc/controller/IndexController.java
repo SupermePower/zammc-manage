@@ -32,7 +32,7 @@ public class IndexController {
             Double totalPrice = orderService.queryTotalPrice();
             Long freeTableCount = diningTableService.queryFreeTableCount();
             modelAndView.addObject("orderCount", orderCount)
-                    .addObject("totalPrice", totalPrice)
+                    .addObject("totalPrice", totalPrice == null ? "0.00" : totalPrice)
                     .addObject("freeTableCount", freeTableCount);
         } catch (Exception e) {
             log.error("IndexController index Exception\n", e);

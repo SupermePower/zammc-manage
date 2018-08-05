@@ -26,7 +26,7 @@
 
         .classA {
             width: 1143px;
-            background: red;
+            background: white;
             margin: 0 auto;
         }
 
@@ -34,10 +34,12 @@
             width: 1000px;
             height: 200px;
             margin: 0 auto;
-            background: sandybrown;
+            background: aliceblue;
             margin-bottom: 20px;
             display: flex;
             align-items: center;
+            box-shadow: 5px 5px 5px #888888;
+            border-radius:10px;
         }
 
         .class_main_body {
