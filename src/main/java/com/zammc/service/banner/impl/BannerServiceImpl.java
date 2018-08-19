@@ -46,6 +46,7 @@ public class BannerServiceImpl implements BannerService {
      * @param pageBean
      * @throws Exception
      */
+    @Override
     public void queryBannerPage(BannerEntity bannerEntity, PageBean pageBean) throws Exception {
         int page = pageBean.getPageNum() - 1;
         int size = pageBean.getPageSize();
@@ -123,6 +124,7 @@ public class BannerServiceImpl implements BannerService {
      * @return
      * @throws Exception
      */
+    @Override
     public Message editBanner(BannerEntity bannerEntity, HttpServletRequest request) throws Exception {
         if (null == bannerEntity.getBannerName() || "".equals(bannerEntity.getBannerName())) {
             return new Message(MessageStatus.SUCCESS, MessageTitle.失败, "banner名称不能为空");
@@ -135,7 +137,9 @@ public class BannerServiceImpl implements BannerService {
         if ("".equals(bannerEntity.getBannerUrl()) || null == bannerEntity.getBannerUrl()) {
             MultipartHttpServletRequest mreq = (MultipartHttpServletRequest) request;
             MultipartFile image = mreq.getFile("image");
-            if (checkBannerImage(banner, image)) return new Message(MessageStatus.FAIL, MessageTitle.失败, "上传图片不能为空");
+            if (checkBannerImage(banner, image)) {
+                return new Message(MessageStatus.FAIL, MessageTitle.失败, "上传图片不能为空");
+            }
         } else {
             banner.setBannerUrl(bannerEntity.getBannerUrl());
         }
@@ -156,7 +160,9 @@ public class BannerServiceImpl implements BannerService {
     public Message addBanner(BannerEntity bannerEntity, HttpServletRequest request) throws Exception {
         MultipartHttpServletRequest mreq = (MultipartHttpServletRequest) request;
         MultipartFile image = mreq.getFile("image");
-        if (checkBannerImage(bannerEntity, image)) return new Message(MessageStatus.FAIL, MessageTitle.失败, "上传图片不能为空");
+        if (checkBannerImage(bannerEntity, image)) {
+            return new Message(MessageStatus.FAIL, MessageTitle.失败, "上传图片不能为空");
+        }
         if (null == bannerEntity.getBannerName() || "".equals(bannerEntity.getBannerName())) {
             return new Message(MessageStatus.FAIL, MessageTitle.失败, "banner名称不能为空");
         }

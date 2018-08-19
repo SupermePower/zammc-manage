@@ -168,6 +168,15 @@
         </a>
     </li>
 
+    <li>
+        <a href="https://www.sxmbyd.com/manage/coupon/queryCouponPage" class="dropdown-toggle">
+            <img style="width:20px;height:20px;" src="${rootURL}resources/images/kaquan-manage.png">
+            <span class="menu-text"> 卡券管理 </span>
+
+            <b class="arrow icon-angle-down"></b>
+        </a>
+    </li>
+
 </ul><!-- /.nav-list -->
 
 <div class="sidebar-collapse" id="sidebar-collapse">

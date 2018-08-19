@@ -1,5 +1,8 @@
 package com.zammc.domain.coupon;
 
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
@@ -11,6 +14,8 @@ import java.sql.Timestamp;
  */
 @Entity
 @Table(name = "coupon")
+@DynamicUpdate
+@DynamicInsert
 public class CouponEntity {
     private long id;
     private int couponNum;
@@ -128,6 +133,7 @@ public class CouponEntity {
 
     @Basic
     @Column(name = "version")
+    @Version
     public byte getVersion() {
         return version;
     }
@@ -154,5 +160,24 @@ public class CouponEntity {
 
     public void setCouponName(String couponName) {
         this.couponName = couponName;
+    }
+
+    @Override
+    public String toString() {
+        return "CouponEntity{" +
+                "id=" + id +
+                ", couponNum=" + couponNum +
+                ", couponType=" + couponType +
+                ", couponImg='" + couponImg + '\'' +
+                ", couponSize=" + couponSize +
+                ", couponCondition=" + couponCondition +
+                ", couponMsg='" + couponMsg + '\'' +
+                ", couponTime=" + couponTime +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                ", version=" + version +
+                ", dataStatus=" + dataStatus +
+                ", couponName='" + couponName + '\'' +
+                '}';
     }
 }
