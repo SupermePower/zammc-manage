@@ -19,12 +19,13 @@ public class OrderInfoEntity {
     private Byte payStatus;
     private String payWay;
     private Timestamp payTime;
-    private Integer tableNum;
+    private String tableNum;
     private String memo;
     private Timestamp createTime;
     private Timestamp updateTime;
     private Byte version;
     private Byte dataStatus;
+    private Byte isConfirm;
 
     @Id
     @Column(name = "order_id")
@@ -98,11 +99,11 @@ public class OrderInfoEntity {
 
     @Basic
     @Column(name = "table_num")
-    public Integer getTableNum() {
+    public String getTableNum() {
         return tableNum;
     }
 
-    public void setTableNum(Integer tableNum) {
+    public void setTableNum(String tableNum) {
         this.tableNum = tableNum;
     }
 
@@ -156,4 +157,13 @@ public class OrderInfoEntity {
         this.dataStatus = dataStatus;
     }
 
+    @Basic
+    @Column(name = "is_confirm")
+    public Byte getIsConfirm() {
+        return isConfirm;
+    }
+
+    public void setIsConfirm(Byte isConfirm) {
+        this.isConfirm = isConfirm;
+    }
 }
